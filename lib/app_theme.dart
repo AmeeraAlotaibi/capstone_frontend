@@ -4,6 +4,7 @@ ThemeData myTheme = ThemeData(
   // GLOBAL THEME
   fontFamily: 'inter',
   primaryColor: Color(0xFF5FA8D3),
+  secondaryHeaderColor: Color(0xFF62B6CB),
   // ICONS
   iconTheme: const IconThemeData(
     color: Color(0xFF1B4965),
@@ -66,7 +67,7 @@ ThemeData myTheme = ThemeData(
     ),
     // BODY
     bodyText1: TextStyle(
-      color: Color.fromARGB(255, 30, 30, 30),
+      color: Color.fromARGB(255, 111, 111, 111),
       fontSize: 15,
       fontWeight: FontWeight.w500,
     ),
@@ -74,7 +75,7 @@ ThemeData myTheme = ThemeData(
     headline6: TextStyle(
       color: Color.fromARGB(255, 30, 30, 30),
       fontWeight: FontWeight.w700,
-      fontSize: 17.5,
+      fontSize: 20,
     ),
     // SECTION HEADINGS
     headline2: TextStyle(
