@@ -14,17 +14,20 @@ class RegisterTab extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             horizontal: 25,
             vertical: 15,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
-                "assets/images/fitness.png",
-                width: 175,
+                "assets/images/fitness-vector.png",
+                width: 300,
+              ),
+              const SizedBox(
+                height: 20,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -70,7 +73,7 @@ class RegisterTab extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(
-                      height: 15,
+                      height: 10,
                     ),
                     CustomInputField(
                       width: 325,
@@ -80,7 +83,7 @@ class RegisterTab extends StatelessWidget {
                       hiddenText: false,
                     ),
                     const SizedBox(
-                      height: 15,
+                      height: 10,
                     ),
                     CustomInputField(
                       width: 325,
@@ -90,7 +93,7 @@ class RegisterTab extends StatelessWidget {
                       hiddenText: true,
                     ),
                     const SizedBox(
-                      height: 15,
+                      height: 10,
                     ),
                     CustomButton(
                       width: 325,
@@ -98,7 +101,10 @@ class RegisterTab extends StatelessWidget {
                         // register function here
                       },
                       buttonText: "Register",
-                    )
+                    ),
+                    const SizedBox(
+                      height: 25,
+                    ),
                   ],
                 ),
               ),

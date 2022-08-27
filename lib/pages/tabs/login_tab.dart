@@ -1,5 +1,6 @@
 import 'package:capstone_frontend/widgets/custom_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginTab extends StatelessWidget {
   LoginTab({Key? key}) : super(key: key);
@@ -12,22 +13,25 @@ class LoginTab extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             horizontal: 25,
             vertical: 15,
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
-                "assets/images/fitness.png",
-                width: 175,
+                "assets/images/fitness-vector-login.png",
+                width: 300,
+              ),
+              const SizedBox(
+                height: 20,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
+                padding: const EdgeInsets.symmetric(horizontal: 0),
                 child: Text(
-                  "Welcome back, ",
+                  "Welcome back,",
                   style: Theme.of(context).textTheme.headline1,
                 ),
               ),
@@ -35,7 +39,7 @@ class LoginTab extends StatelessWidget {
                 height: 5,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Text(
                   "Login using the correct username/password combination.",
                   style: Theme.of(context).textTheme.subtitle1,
@@ -55,7 +59,7 @@ class LoginTab extends StatelessWidget {
                       hiddenText: false,
                     ),
                     const SizedBox(
-                      height: 15,
+                      height: 10,
                     ),
                     CustomInputField(
                       width: 325,
@@ -65,15 +69,19 @@ class LoginTab extends StatelessWidget {
                       hiddenText: true,
                     ),
                     const SizedBox(
-                      height: 15,
+                      height: 10,
                     ),
                     CustomButton(
                       width: 325,
                       onPressed: () {
                         // login function here
+                        context.go("/home");
                       },
                       buttonText: "Login",
-                    )
+                    ),
+                    const SizedBox(
+                      height: 25,
+                    ),
                   ],
                 ),
               ),

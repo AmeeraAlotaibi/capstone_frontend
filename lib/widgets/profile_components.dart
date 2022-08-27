@@ -8,20 +8,48 @@ class ProfileAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      radius: 50,
+      radius: 60,
       backgroundColor: Colors.grey[400],
       backgroundImage: NetworkImage(avatar),
     );
   }
 }
 
+// a small container that houses the edit icon for the profile page
+class EditButton extends StatelessWidget {
+  EditButton({
+    Key? key,
+    required this.onTap,
+  }) : super(key: key);
+
+  final VoidCallback onTap;
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: ClipOval(
+        child: Container(
+          width: 30,
+          height: 30,
+          color: Theme.of(context).primaryColor,
+          child: const Icon(
+            Icons.edit,
+            size: 17,
+            color: Colors.white,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// a simple horizontal line
 class HorizontalLine extends StatelessWidget {
   const HorizontalLine({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 5),
+      margin: const EdgeInsets.only(top: 10),
       width: double.infinity,
       height: 1,
       color: Colors.grey[200],
@@ -29,68 +57,101 @@ class HorizontalLine extends StatelessWidget {
   }
 }
 
+// ROW DISPLAYS HEIGHT, AGE, AND WEIGHT IN PROFILE
 class DetailsRow extends StatelessWidget {
   DetailsRow({
     Key? key,
     required this.height,
     required this.age,
-    required this.friends,
+    required this.weight,
   }) : super(key: key);
 
   final String height;
   final String age;
-  final String friends;
+  final String weight;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          children: [
-            Text(
-              "Height".toUpperCase(),
-              style: TextStyle(
-                color: Colors.grey[700],
-                fontSize: 16,
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Height",
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 14,
+                ),
               ),
-            ),
-            Text(
-              "${height}cm",
-              style: Theme.of(context).textTheme.headline6,
-            ),
-          ],
-        ),
-        Column(
-          children: [
-            Text(
-              "Age".toUpperCase(),
-              style: TextStyle(
-                color: Colors.grey[700],
-                fontSize: 16,
+              const SizedBox(
+                height: 5,
               ),
-            ),
-            Text(
-              age,
-              style: Theme.of(context).textTheme.headline6,
-            ),
-          ],
-        ),
-        Column(
-          children: [
-            Text(
-              "Friends".toUpperCase(),
-              style: TextStyle(
-                color: Colors.grey[700],
-                fontSize: 16,
+              Text(
+                "${height}cm",
+                style: Theme.of(context).textTheme.headline6,
               ),
-            ),
-            Text(
-              friends,
-              style: Theme.of(context).textTheme.headline6,
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+          Container(
+            width: 1,
+            height: 40,
+            color: Colors.grey[300],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Age",
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 14,
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                "${age}yr",
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ],
+          ),
+          Container(
+            width: 1,
+            height: 40,
+            color: Colors.grey[300],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Weight",
+                style: TextStyle(
+                  color: Colors.grey[700],
+                  fontSize: 14,
+                ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                "${weight}kg",
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

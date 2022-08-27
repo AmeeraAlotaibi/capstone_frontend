@@ -1,3 +1,5 @@
+import 'package:capstone_frontend/pages/tabs/chat_tab.dart';
+import 'package:capstone_frontend/pages/tabs/explore_tab.dart';
 import 'package:capstone_frontend/pages/tabs/home_tab.dart';
 import 'package:capstone_frontend/pages/tabs/profile_tab.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +15,8 @@ class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
   final pages = [
     HomeTab(),
-    Center(child: Icon(Icons.explore)),
-    Center(child: Icon(Icons.chat)),
+    ExploreTab(),
+    ChatTab(),
     ProfileTab(),
   ];
   @override
@@ -23,17 +25,17 @@ class _HomePageState extends State<HomePage> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: _currentIndex == 0
-            ? Text("Home")
+            ? const Text("Home")
             : _currentIndex == 1
-                ? Text("Explore")
+                ? const Text("Explore")
                 : _currentIndex == 2
-                    ? Text("Chat")
+                    ? const Text("Chat")
                     : _currentIndex == 3
-                        ? Text("Profile")
-                        : Text(""),
+                        ? const Text("Profile")
+                        : const Text(""),
         actions: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 25),
             child: GestureDetector(
               onTap: () {
                 // logout function here

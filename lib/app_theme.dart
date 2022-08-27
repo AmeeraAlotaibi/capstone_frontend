@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 ThemeData myTheme = ThemeData(
   // GLOBAL THEME
   fontFamily: 'inter',
-  primaryColor: Color(0xFF5FA8D3),
-  secondaryHeaderColor: Color(0xFF62B6CB),
+  scaffoldBackgroundColor: Colors.white,
+  primaryColor: const Color(0xFF7860ff),
+  secondaryHeaderColor: const Color(0xFF967cfe),
+  cardColor: const Color(0xFFf2eefc),
   // ICONS
   iconTheme: const IconThemeData(
-    color: Color(0xFF1B4965),
+    color: Color(0xFF7860ff),
   ),
 
   colorScheme: ThemeData().colorScheme.copyWith(
-        primary: const Color(0xFF5FA8D3),
+        primary: const Color(0xFF7860ff),
       ),
 
   // APP BAR THEME
@@ -20,34 +22,41 @@ ThemeData myTheme = ThemeData(
     backgroundColor: Colors.transparent,
     toolbarHeight: 50,
     titleTextStyle: TextStyle(
-      color: Color.fromARGB(255, 32, 32, 32),
+      color: Color(0xFF4c4c4c),
       fontSize: 20,
       fontWeight: FontWeight.w500,
       letterSpacing: 0.75,
     ),
     iconTheme: IconThemeData(
-      color: Color.fromARGB(255, 32, 32, 32),
+      color: Color(0xFF4c4c4c),
       size: 25,
     ),
     actionsIconTheme: IconThemeData(
-      color: Color.fromARGB(255, 32, 32, 32),
+      color: Color(0xFF4c4c4c),
       size: 25,
     ),
   ),
   // BOTTOM NAVIGATION BAR
   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
     elevation: 0,
-    backgroundColor: Color(0xFF5FA8D3),
+    backgroundColor: Colors.white,
     type: BottomNavigationBarType.fixed,
     selectedIconTheme: IconThemeData(
-      color: Color.fromARGB(255, 255, 255, 255),
-      size: 25,
+      color: Color(0xFF7860ff),
+    ),
+    unselectedIconTheme: IconThemeData(
+      color: Color.fromARGB(255, 130, 130, 130),
     ),
     selectedLabelStyle: TextStyle(
-      color: Colors.white,
+      color: Color(0xFF7860ff),
+      fontSize: 10,
     ),
-    showSelectedLabels: false,
-    showUnselectedLabels: false,
+    unselectedLabelStyle: TextStyle(
+      color: Color(0xFF4c4c4c),
+      fontSize: 10,
+    ),
+    showSelectedLabels: true,
+    showUnselectedLabels: true,
   ),
 
   // TEXT STYLES
@@ -55,32 +64,43 @@ ThemeData myTheme = ThemeData(
   textTheme: const TextTheme(
     // HEADINGs
     headline1: TextStyle(
-      color: Color(0xFF1B4965),
-      fontSize: 40,
+      color: Color(0xFF735cfd),
+      fontSize: 30,
       fontWeight: FontWeight.w700,
     ),
     // SUBTITLES
     subtitle1: TextStyle(
-      color: Color(0xFF7d8597),
-      fontSize: 20,
+      color: Color(0xFF4c4c4c),
+      fontSize: 15,
       fontWeight: FontWeight.w400,
+    ),
+
+    subtitle2: TextStyle(
+      color: Color.fromARGB(255, 121, 121, 121),
+      fontSize: 15,
     ),
     // BODY
     bodyText1: TextStyle(
-      color: Color.fromARGB(255, 111, 111, 111),
+      color: Color(0xFF4c4c4c),
       fontSize: 15,
       fontWeight: FontWeight.w500,
     ),
     // CARDS TITLE
     headline6: TextStyle(
-      color: Color.fromARGB(255, 30, 30, 30),
+      color: Color(0xFF4c4c4c),
       fontWeight: FontWeight.w700,
-      fontSize: 20,
+      fontSize: 18,
     ),
     // SECTION HEADINGS
     headline2: TextStyle(
-      color: Color.fromARGB(255, 30, 30, 30),
+      color: Color(0xFF967cfe),
       fontSize: 25,
+      fontWeight: FontWeight.w700,
+    ),
+
+    headline3: TextStyle(
+      color: Color(0xFF4c4c4c),
+      fontSize: 30,
       fontWeight: FontWeight.w700,
     ),
   ),

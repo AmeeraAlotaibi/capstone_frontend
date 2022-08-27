@@ -1,8 +1,9 @@
+import 'package:capstone_frontend/widgets/custom_widgets.dart';
+import 'package:capstone_frontend/widgets/profile_components.dart';
+import 'package:capstone_frontend/widgets/subscription_card.dart';
+import 'package:flutter/material.dart';
 import 'package:capstone_frontend/widgets/schedule_card.dart';
 import 'package:capstone_frontend/widgets/welcome_card.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class HomeTab extends StatelessWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -18,24 +19,45 @@ class HomeTab extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
-                height: 150,
+                height: 125,
               ),
               WelcomeCard(
-                username: "Ameera",
+                username: "Ameera".toUpperCase(),
                 avatar:
                     "https://millingtontownship.com/wp-content/uploads/2021/01/default.jpg",
               ),
-              const SizedBox(
-                height: 50,
-              ),
-              Text(
-                "Schedule for Today:",
-                style: Theme.of(context).textTheme.headline6,
-              ),
+              const HorizontalLine(),
+              const SectionHeadings(
+                  icon: Icon(
+                    Icons.today,
+                    color: Color(0xFF4c4c4c),
+                  ),
+                  heading: "Today's Schedule"),
               const SizedBox(
                 height: 15,
               ),
-              ScheduleCard(),
+              ScheduleCard(
+                sets: 5,
+                workout: "Push-ups",
+              ),
+              const SectionHeadings(
+                  icon: Icon(
+                    Icons.monetization_on,
+                    color: Color(0xFF4c4c4c),
+                  ),
+                  heading: "My Subscription"),
+              const SizedBox(
+                height: 15,
+              ),
+              SubscriptionCard(
+                start_date: "01-09-2022",
+                end_date: "01-10-2022",
+                trainer: "Tony Stark",
+                price: "9.99",
+                onPressed: () {
+                  // cancel sub button function here
+                },
+              ),
             ],
           ),
         ),

@@ -17,10 +17,16 @@ class WelcomeCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 "Hello there,",
-                style: Theme.of(context).textTheme.subtitle1,
+                style: TextStyle(
+                  fontSize: 20,
+                  letterSpacing: 1,
+                  color: Color.fromARGB(255, 184, 184, 184),
+                ),
               ),
               Text(
                 username,

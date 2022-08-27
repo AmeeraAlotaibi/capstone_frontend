@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 // INPUT FIELD ------------------------------------------
 class CustomInputField extends StatelessWidget {
@@ -27,13 +25,14 @@ class CustomInputField extends StatelessWidget {
         controller: controller,
         obscureText: hiddenText,
         decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 15),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
           hintText: hintText,
           prefixIcon: icon,
           filled: true,
           fillColor: Colors.white,
           border: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               width: 1,
               color: Color.fromARGB(96, 71, 71, 71),
             ),
@@ -69,15 +68,59 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+          colors: [
+            Theme.of(context).primaryColor,
+            Theme.of(context).secondaryHeaderColor,
+          ],
+        ),
+        borderRadius: BorderRadius.circular(5),
+      ),
       child: ElevatedButton(
         onPressed: onPressed,
         child: Text(buttonText),
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.symmetric(vertical: 13.5),
-          primary: Theme.of(context).primaryColor,
+          padding: const EdgeInsets.symmetric(vertical: 13.5),
+          primary: Colors.transparent,
           elevation: 0,
-          textStyle: TextStyle(
+          textStyle: const TextStyle(
             fontSize: 17,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// CANCEL BUTTON
+class CancelButton extends StatelessWidget {
+  const CancelButton({
+    Key? key,
+    required this.onPressed,
+    required this.buttonText,
+    required this.width,
+  }) : super(key: key);
+
+  final VoidCallback onPressed;
+  final String buttonText;
+  final double width;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        child: Text(buttonText),
+        style: ElevatedButton.styleFrom(
+          primary: Colors.redAccent,
+          elevation: 0,
+          textStyle: const TextStyle(
+            fontSize: 12,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -142,7 +185,7 @@ class CustomFormField extends StatelessWidget {
           filled: true,
           fillColor: Colors.white,
           border: OutlineInputBorder(
-            borderSide: BorderSide(
+            borderSide: const BorderSide(
               width: 1,
               color: Color.fromARGB(96, 60, 60, 60),
             ),
@@ -156,6 +199,38 @@ class CustomFormField extends StatelessWidget {
             borderRadius: BorderRadius.circular(5),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class SectionHeadings extends StatelessWidget {
+  const SectionHeadings({
+    Key? key,
+    required this.icon,
+    required this.heading,
+  }) : super(key: key);
+
+  final Icon icon;
+  final String heading;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 35),
+      width: 350,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          icon,
+          const SizedBox(
+            width: 10,
+          ),
+          Text(
+            heading,
+            textAlign: TextAlign.left,
+            style: Theme.of(context).textTheme.headline6,
+          ),
+        ],
       ),
     );
   }

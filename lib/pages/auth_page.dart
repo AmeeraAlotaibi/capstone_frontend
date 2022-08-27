@@ -1,8 +1,6 @@
 import 'package:capstone_frontend/pages/tabs/login_tab.dart';
 import 'package:capstone_frontend/pages/tabs/register_tab.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class AuthPage extends StatefulWidget {
   const AuthPage({Key? key}) : super(key: key);
@@ -21,13 +19,13 @@ class _AuthPageState extends State<AuthPage> {
           toolbarHeight: 0,
           bottom: TabBar(
             labelColor: Theme.of(context).primaryColor,
-            labelStyle: TextStyle(
+            labelStyle: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w400,
             ),
-            unselectedLabelColor: Color.fromARGB(255, 109, 109, 109),
-            indicatorColor: Color(0xFF5FA8D3),
-            tabs: [
+            unselectedLabelColor: const Color(0xFF4c4c4c),
+            indicatorColor: Theme.of(context).primaryColor,
+            tabs: const [
               Tab(
                 text: "Register",
                 iconMargin: EdgeInsets.all(2),
