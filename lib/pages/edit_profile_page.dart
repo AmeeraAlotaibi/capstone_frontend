@@ -22,23 +22,22 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final _height = TextEditingController();
   final _weight = TextEditingController();
   final _age = TextEditingController();
-
+  final List<String> bloodTypes = [
+    "O+",
+    "O-",
+    "A+",
+    "A-",
+    "B+",
+    "B-",
+    "AB+",
+    "AB-"
+  ];
+  String? selectedItem = "O+";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Edit Profile"),
-        actions: [
-          GestureDetector(
-            onTap: () {
-              // SAVE FORM FUNCTION HERE
-            },
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25),
-              child: Icon(Icons.done),
-            ),
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -81,70 +80,159 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   ),
                 ),
                 // end of avatar omage picker
-                const SizedBox(height: 25,),
+                const SizedBox(
+                  height: 25,
+                ),
+                // FIRST NAME AND LAST NAME ROWs
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CustomFormField(
-                      width: 175, 
-                      controller: _firstName, 
+                      label: "First Name: ",
+                      width: 170,
+                      controller: _firstName,
                       hintText: "First Name",
-                      ),
-                    const SizedBox(width: 10,),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     CustomFormField(
-                      width: 175, 
-                      controller: _lastName, 
+                      label: "Last Name: ",
+                      width: 170,
+                      controller: _lastName,
                       hintText: "Last Name",
-                      ),
+                    ),
                   ],
                 ),
 
-                const SizedBox(height: 15,),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                  CustomFormField(
-                    width: 200, 
-                    controller: _userName, 
-                    hintText: "Username",
-                    ),
-                  const SizedBox(width: 10,),
-                  CustomFormField(
-                    width: 150, 
-                    controller: _bloodType, 
-                    hintText: "Blood Type",
-                  
-                    ),
-                ],
+                const SizedBox(
+                  height: 15,
                 ),
-                const SizedBox(height: 15,),
 
+                CustomFormField(
+                  label: "Username: ",
+                  width: 350,
+                  controller: _userName,
+                  hintText: "Username",
+                ),
+
+                const SizedBox(
+                  height: 15,
+                ),
+
+                // height, age and weight row details
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                  CustomFormField(
-                    width: 100, 
-                    controller: _height, 
-                    hintText: "Height",
+                    CustomFormField(
+                      label: "Height: ",
+                      width: 110,
+                      controller: _height,
+                      hintText: "Height",
+                      suffix: const Text("CM"),
                     ),
-                  
-                  const SizedBox(width: 10,),
-                  
-                  CustomFormField(
-                    width: 100, 
-                    controller: _age, 
-                    hintText: "Age",
-                  
+                    const SizedBox(
+                      width: 10,
                     ),
-                  const SizedBox(width: 10,),
+                    CustomFormField(
+                      label: "Age: ",
+                      width: 110,
+                      controller: _age,
+                      hintText: "Age",
+                      suffix: const Text("YRS"),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    CustomFormField(
+                      label: "Weight: ",
+                      width: 110,
+                      controller: _weight,
+                      hintText: "Weight",
+                      suffix: const Text("KG"),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
 
-                  CustomFormField(
-                    width: 100, 
-                    controller: _weight, 
-                    hintText: "Weight",
+                // dropdown
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      "Blood Type: ",
+                      style: TextStyle(
+                        color: Color(0xFF4c4c4c),
+                        fontSize: 14,
+                      ),
                     ),
-                ],
+                    const SizedBox(
+                      height: 7.5,
+                    ),
+                    SizedBox(
+                      width: 350,
+                      child: DropdownButtonFormField<String>(
+                        isExpanded: true,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 0),
+                          prefixIcon: const Icon(
+                            Icons.bloodtype,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            borderSide: const BorderSide(
+                              color: Color(0xFF4c4c4c),
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            borderSide: BorderSide(
+                              width: 2,
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                        ),
+                        value: selectedItem,
+                        items: bloodTypes
+                            .map(
+                              (type) => DropdownMenuItem(
+                                value: type,
+                                child: Text(type),
+                              ),
+                            )
+                            .toList(),
+                        onChanged: (type) =>
+                            setState(() => selectedItem = type),
+                      ),
+                    ),
+                  ],
+                ),
+                // end of dropdown
+
+                const SizedBox(
+                  height: 15,
+                ),
+                BioField(width: 350, controller: _bio),
+                const SizedBox(
+                  height: 25,
+                ),
+                // save button
+                CustomButton(
+                  width: 350,
+                  buttonText: "Save",
+                  onPressed: () {
+                    // save profile function here
+                  },
+                ),
+
+                const SizedBox(
+                  height: 25,
                 ),
               ],
             ),

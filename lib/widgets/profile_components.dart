@@ -120,7 +120,7 @@ class DetailsRow extends StatelessWidget {
                 height: 5,
               ),
               Text(
-                "${age}yr",
+                "${age}yrs",
                 style: Theme.of(context).textTheme.headline6,
               ),
             ],
