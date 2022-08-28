@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:capstone_frontend/widgets/custom_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -17,6 +18,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final _lastName = TextEditingController();
   final _userName = TextEditingController();
   final _bio = TextEditingController();
+  final _bloodType = TextEditingController();
+  final _height = TextEditingController();
+  final _weight = TextEditingController();
+  final _age = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +79,72 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             ),
                     ),
                   ),
+                ),
+                // end of avatar omage picker
+                const SizedBox(height: 25,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomFormField(
+                      width: 175, 
+                      controller: _firstName, 
+                      hintText: "First Name",
+                      ),
+                    const SizedBox(width: 10,),
+                    CustomFormField(
+                      width: 175, 
+                      controller: _lastName, 
+                      hintText: "Last Name",
+                      ),
+                  ],
+                ),
+
+                const SizedBox(height: 15,),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                  CustomFormField(
+                    width: 200, 
+                    controller: _userName, 
+                    hintText: "Username",
+                    ),
+                  const SizedBox(width: 10,),
+                  CustomFormField(
+                    width: 150, 
+                    controller: _bloodType, 
+                    hintText: "Blood Type",
+                  
+                    ),
+                ],
+                ),
+                const SizedBox(height: 15,),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                  CustomFormField(
+                    width: 100, 
+                    controller: _height, 
+                    hintText: "Height",
+                    ),
+                  
+                  const SizedBox(width: 10,),
+                  
+                  CustomFormField(
+                    width: 100, 
+                    controller: _age, 
+                    hintText: "Age",
+                  
+                    ),
+                  const SizedBox(width: 10,),
+
+                  CustomFormField(
+                    width: 100, 
+                    controller: _weight, 
+                    hintText: "Weight",
+                    ),
+                ],
                 ),
               ],
             ),
