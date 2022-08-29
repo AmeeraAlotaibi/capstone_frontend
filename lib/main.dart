@@ -1,6 +1,7 @@
 import 'package:capstone_frontend/pages/auth_page.dart';
 import 'package:capstone_frontend/pages/edit_profile_page.dart';
 import 'package:capstone_frontend/pages/home_page.dart';
+import 'package:capstone_frontend/pages/trainer_profile.dart';
 import 'package:capstone_frontend/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -50,6 +51,10 @@ class MyApp extends StatelessWidget {
       GoRoute(
         path: "/edit-profile",
         builder: (context, state) => EditProfilePage(),
+      ),
+      GoRoute(
+        path: "/trainer-profile",
+        builder: (context, state) => TrainerProfile(),
       ),
     ],
   );

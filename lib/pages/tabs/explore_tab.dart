@@ -4,6 +4,7 @@ import 'package:capstone_frontend/widgets/trainer_card.dart';
 import 'package:capstone_frontend/widgets/workout_box.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
 class ExploreTab extends StatelessWidget {
   ExploreTab({Key? key}) : super(key: key);
@@ -70,7 +71,9 @@ class ExploreTab extends StatelessWidget {
                     itemBuilder: (context, index) => TrainerCard(
                       trainer: trainer[index],
                       avatar: avatar[index],
-                      onTap: () {},
+                      onTap: () {
+                        context.push("/trainer-profile");
+                      },
                     ),
                   ),
                 ),

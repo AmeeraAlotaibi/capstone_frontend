@@ -155,3 +155,52 @@ class DetailsRow extends StatelessWidget {
     );
   }
 }
+
+class TrainerProfileCard extends StatelessWidget {
+  TrainerProfileCard({
+    Key? key,
+    required this.avatar,
+  }) : super(key: key);
+  final String avatar;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 350,
+      color: Colors.grey[100],
+      child: Row(
+        children: [
+          Container(
+            width: 120,
+            height: 120,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: NetworkImage(avatar),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 15,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Amy Santiago",
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              Text(
+                "@GreatAmy",
+                style: TextStyle(
+                  color: Color(0xFF4c4c4c),
+                  fontSize: 16,
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+}
