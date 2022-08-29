@@ -104,4 +104,6 @@ ThemeData myTheme = ThemeData(
       fontWeight: FontWeight.w700,
     ),
   ),
+  // ************************* ADD INPUT DECORATION THEME
+  // inputDecorationTheme: 
 );

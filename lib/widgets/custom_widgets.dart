@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+
+ 
+
 // INPUT FIELD ------------------------------------------
 class CustomInputField extends StatelessWidget {
   CustomInputField({
@@ -239,28 +242,38 @@ class SectionHeadings extends StatelessWidget {
     Key? key,
     required this.icon,
     required this.heading,
+    this.trailing,
   }) : super(key: key);
 
   final Icon icon;
   final String heading;
+  final Widget? trailing;
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 35),
-      width: 250,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          icon,
-          const SizedBox(
-            width: 10,
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                icon,
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  heading,
+                  textAlign: TextAlign.left,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+              
+              ],
+            ),
           ),
-          Text(
-            heading,
-            textAlign: TextAlign.left,
-            style: Theme.of(context).textTheme.headline6,
-          ),
+
+          if (trailing != null) trailing!, 
         ],
       ),
     );
@@ -283,34 +296,39 @@ class SectionHeadingsWithButton extends StatelessWidget {
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 35),
-      width: 350,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              icon,
-              const SizedBox(
-                width: 10,
-              ),
-              Text(
-                heading,
-                textAlign: TextAlign.left,
-                style: Theme.of(context).textTheme.headline6,
-              ),
-            ],
-          ),
-          CustomTextButton(
+    return SectionHeadings(heading: heading,icon: icon, trailing: CustomTextButton(
             onPressed: onPressed,
             text: buttonText,
-          ),
-        ],
-      ),
-    );
+          ),);
+    
+    // Container(
+    //   margin: const EdgeInsets.only(top: 35),
+    //   width: 350,
+    //   child: Row(
+    //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //     crossAxisAlignment: CrossAxisAlignment.center,
+    //     children: [
+    //       Row(
+    //         mainAxisAlignment: MainAxisAlignment.start,
+    //         children: [
+    //           icon,
+    //           const SizedBox(
+    //             width: 10,
+    //           ),
+    //           Text(
+    //             heading,
+    //             textAlign: TextAlign.left,
+    //             style: Theme.of(context).textTheme.headline6,
+    //           ),
+    //         ],
+    //       ),
+    //       CustomTextButton(
+    //         onPressed: onPressed,
+    //         text: buttonText,
+    //       ),
+    //     ],
+    //   ),
+    // );
   }
 }
 

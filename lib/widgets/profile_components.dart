@@ -160,8 +160,22 @@ class TrainerProfileCard extends StatelessWidget {
   TrainerProfileCard({
     Key? key,
     required this.avatar,
+    required this.fullName,
+    required this.username,
+    required this.experience,
+    required this.specialty,
+    required this.rating,
+    required this.bio,
+
   }) : super(key: key);
+
   final String avatar;
+  final String fullName;
+  final String username;
+  final String experience;
+  final String specialty;
+  final String bio;
+  final String rating;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -187,16 +201,18 @@ class TrainerProfileCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Amy Santiago",
+                fullName,
                 style: Theme.of(context).textTheme.headline6,
               ),
               Text(
-                "@GreatAmy",
+                username,
                 style: TextStyle(
                   color: Color(0xFF4c4c4c),
                   fontSize: 16,
                 ),
               ),
+              Text("Experience: $experience", style: Theme.of(context).textTheme.bodyText2,), 
+              Text("Specialty: $specialty", style: Theme.of(context).textTheme.bodyText2,), 
             ],
           )
         ],

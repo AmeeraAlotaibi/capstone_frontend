@@ -11,7 +11,7 @@ class ExploreTab extends StatelessWidget {
   final _query = TextEditingController();
   // DELETE LATER *******************
   final List<String> trainer = [
-    "Adam Scott",
+    "Terry Crews",
     "Tony Stark",
     "Jake Peralta",
   ];
@@ -56,6 +56,7 @@ class ExploreTab extends StatelessWidget {
                   buttonText: "see all",
                   onPressed: () {
                     // push to a list of trainers page here
+                    context.push("/trainers-list");
                   },
                 ),
 

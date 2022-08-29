@@ -4,6 +4,9 @@ import 'package:capstone_frontend/widgets/custom_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart';
+
+
 
 class LoginTab extends StatelessWidget {
   LoginTab({Key? key}) : super(key: key);
@@ -76,15 +79,17 @@ class LoginTab extends StatelessWidget {
                     ),
                     CustomButton(
                       width: 325,
-                      onPressed: () {
+                      onPressed: () async {
                         // login function here
-                        context.read<AuthProvider>().login(
+                        var response = await context.read<AuthProvider>().login(
                               user: User(
                                 username: _username.text,
                                 password: _password.text,
                               ),
                             );
-                        context.go("/home");
+                        // if (response.statusCode == 200) {
+                        //   context.go("/home");
+                        // }
                       },
                       buttonText: "Login",
                     ),
