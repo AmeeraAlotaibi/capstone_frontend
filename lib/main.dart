@@ -1,12 +1,23 @@
 import 'package:capstone_frontend/pages/auth_page.dart';
 import 'package:capstone_frontend/pages/edit_profile_page.dart';
 import 'package:capstone_frontend/pages/home_page.dart';
+import 'package:capstone_frontend/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'app_theme.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AuthProvider>(
+          create: (_) => AuthProvider(),
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -26,9 +37,10 @@ class MyApp extends StatelessWidget {
   }
 
   final _router = GoRouter(
+    initialLocation: "/auth",
     routes: [
       GoRoute(
-        path: "/",
+        path: "/auth",
         builder: (context, state) => AuthPage(),
       ),
       GoRoute(

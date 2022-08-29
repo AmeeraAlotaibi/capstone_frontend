@@ -66,12 +66,15 @@ class ProfileTab extends StatelessWidget {
                       age: "25",
                       weight: "75",
                     ),
-                    const SectionHeadings(
-                      icon: Icon(
-                        Icons.monitor_heart,
-                        color: Color(0xFF4c4c4c),
+                    const SizedBox(
+                      width: 350,
+                      child: SectionHeadings(
+                        icon: Icon(
+                          Icons.monitor_heart,
+                          color: Color(0xFF4c4c4c),
+                        ),
+                        heading: "Statistics",
                       ),
-                      heading: "Statistics",
                     ),
                     const HorizontalLine(),
                   ],

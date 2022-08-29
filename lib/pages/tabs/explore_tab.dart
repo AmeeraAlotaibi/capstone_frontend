@@ -46,15 +46,16 @@ class ExploreTab extends StatelessWidget {
                 SearchBar(
                   controller: _query,
                 ),
-                const SectionHeadings(
-                  icon: Icon(
+                SectionHeadingsWithButton(
+                  icon: const Icon(
                     Icons.people,
                     color: Color(0xFF4c4c4c),
                   ),
                   heading: "Popular Trainers",
-                ),
-                const SizedBox(
-                  height: 15,
+                  buttonText: "see all",
+                  onPressed: () {
+                    // push to a list of trainers page here
+                  },
                 ),
 
                 // Will be replaced by a list view builder later on
@@ -77,7 +78,7 @@ class ExploreTab extends StatelessWidget {
 
                 const SectionHeadings(
                   icon: Icon(
-                    Icons.sports_martial_arts,
+                    Icons.sports_gymnastics,
                     color: Color(0xFF4c4c4c),
                   ),
                   heading: "Workouts",
@@ -89,14 +90,101 @@ class ExploreTab extends StatelessWidget {
                 // start of workout container
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
-                    WorkoutBox(),
-                    WorkoutBox(),
-                    WorkoutBox(),
-                    WorkoutBox(),
+                  children: [
+                    WorkoutBox(
+                      bgColor: Theme.of(context).cardColor,
+                      color: Theme.of(context).primaryColor,
+                      icon: FaIcon(
+                        FontAwesomeIcons.personDigging,
+                        color: Theme.of(context).primaryColor,
+                        size: 35,
+                      ),
+                      title: "Acrobatic",
+                    ),
+                    WorkoutBox(
+                      bgColor: const Color.fromARGB(255, 223, 244, 255),
+                      color: const Color.fromARGB(255, 25, 143, 239),
+                      icon: const FaIcon(
+                        FontAwesomeIcons.personBiking,
+                        color: Color.fromARGB(255, 25, 143, 239),
+                        size: 35,
+                      ),
+                      title: "Biking",
+                    ),
+                    WorkoutBox(
+                      bgColor: Color.fromARGB(255, 255, 250, 230),
+                      color: Color.fromARGB(255, 244, 200, 3),
+                      icon: const FaIcon(
+                        FontAwesomeIcons.personDigging,
+                        color: Color.fromARGB(255, 244, 200, 3),
+                        size: 35,
+                      ),
+                      title: "Acrobatic",
+                    ),
+                    WorkoutBox(
+                      bgColor: Color.fromARGB(255, 255, 222, 245),
+                      color: Color.fromARGB(255, 210, 22, 132),
+                      icon: const FaIcon(
+                        FontAwesomeIcons.personDigging,
+                        color: Color.fromARGB(255, 210, 22, 132),
+                        size: 35,
+                      ),
+                      title: "Acrobatic",
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    WorkoutBox(
+                      bgColor: Theme.of(context).cardColor,
+                      color: Theme.of(context).primaryColor,
+                      icon: FaIcon(
+                        FontAwesomeIcons.personDigging,
+                        color: Theme.of(context).primaryColor,
+                        size: 35,
+                      ),
+                      title: "Acrobatic",
+                    ),
+                    WorkoutBox(
+                      bgColor: const Color.fromARGB(255, 223, 244, 255),
+                      color: const Color.fromARGB(255, 25, 143, 239),
+                      icon: const FaIcon(
+                        FontAwesomeIcons.personBiking,
+                        color: Color.fromARGB(255, 25, 143, 239),
+                        size: 35,
+                      ),
+                      title: "Biking",
+                    ),
+                    WorkoutBox(
+                      bgColor: Color.fromARGB(255, 255, 250, 230),
+                      color: Color.fromARGB(255, 244, 200, 3),
+                      icon: const FaIcon(
+                        FontAwesomeIcons.personDigging,
+                        color: Color.fromARGB(255, 244, 200, 3),
+                        size: 35,
+                      ),
+                      title: "Acrobatic",
+                    ),
+                    WorkoutBox(
+                      bgColor: Color.fromARGB(255, 255, 222, 245),
+                      color: Color.fromARGB(255, 210, 22, 132),
+                      icon: const FaIcon(
+                        FontAwesomeIcons.personDigging,
+                        color: Color.fromARGB(255, 210, 22, 132),
+                        size: 35,
+                      ),
+                      title: "Acrobatic",
+                    ),
                   ],
                 ),
                 // end of workout container
+                const SizedBox(
+                  height: 10,
+                ),
               ],
             ),
           ),

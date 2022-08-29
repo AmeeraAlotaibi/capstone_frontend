@@ -145,11 +145,11 @@ class CustomTextButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(text),
       style: TextButton.styleFrom(
-          primary: Theme.of(context).primaryColor,
-          textStyle: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          )),
+        primary: Color(0xFF4c4c4c),
+        textStyle: TextStyle(
+          fontSize: 14,
+        ),
+      ),
     );
   }
 }
@@ -247,8 +247,9 @@ class SectionHeadings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 35),
-      width: 350,
+      width: 250,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           icon,
@@ -259,6 +260,53 @@ class SectionHeadings extends StatelessWidget {
             heading,
             textAlign: TextAlign.left,
             style: Theme.of(context).textTheme.headline6,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// Section headings with side button
+class SectionHeadingsWithButton extends StatelessWidget {
+  const SectionHeadingsWithButton({
+    Key? key,
+    required this.icon,
+    required this.heading,
+    required this.buttonText,
+    required this.onPressed,
+  }) : super(key: key);
+
+  final Icon icon;
+  final String heading;
+  final String buttonText;
+  final VoidCallback onPressed;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 35),
+      width: 350,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              icon,
+              const SizedBox(
+                width: 10,
+              ),
+              Text(
+                heading,
+                textAlign: TextAlign.left,
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ],
+          ),
+          CustomTextButton(
+            onPressed: onPressed,
+            text: buttonText,
           ),
         ],
       ),

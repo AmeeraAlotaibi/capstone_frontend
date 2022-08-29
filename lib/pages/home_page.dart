@@ -2,7 +2,10 @@ import 'package:capstone_frontend/pages/tabs/chat_tab.dart';
 import 'package:capstone_frontend/pages/tabs/explore_tab.dart';
 import 'package:capstone_frontend/pages/tabs/home_tab.dart';
 import 'package:capstone_frontend/pages/tabs/profile_tab.dart';
+import 'package:capstone_frontend/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -34,12 +37,13 @@ class _HomePageState extends State<HomePage> {
                         ? const Text("Profile")
                         : const Text(""),
         actions: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: GestureDetector(
-              onTap: () {
-                // logout function here
-              },
+          GestureDetector(
+            onTap: () {
+              context.read<AuthProvider>().logout();
+              context.go("/auth");
+            },
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
               child: Icon(Icons.logout),
             ),
           )

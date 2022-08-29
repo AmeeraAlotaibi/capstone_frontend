@@ -40,6 +40,9 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   font_awesome_flutter: ^10.1.0
   image_picker: ^0.8.5+3
+  build_runner: ^2.2.0
+  json_serializable: ^6.3.1
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:

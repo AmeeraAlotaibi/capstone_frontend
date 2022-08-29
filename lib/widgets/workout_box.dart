@@ -2,31 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class WorkoutBox extends StatelessWidget {
-  const WorkoutBox({Key? key}) : super(key: key);
-
+  WorkoutBox({
+    Key? key,
+    required this.bgColor,
+    required this.color,
+    required this.title,
+    required this.icon,
+  }) : super(key: key);
+  final String title;
+  final FaIcon icon;
+  final Color bgColor;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 75,
+      width: 80,
+      height: 80,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
+        color: bgColor,
         borderRadius: BorderRadius.circular(5),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const FaIcon(
-            FontAwesomeIcons.personRunning,
-            size: 35,
-          ),
+          icon,
           const SizedBox(
-            height: 5,
+            height: 5.5,
           ),
           Text(
-            "Acrobatic",
-            style:
-                TextStyle(color: Theme.of(context).primaryColor, fontSize: 10),
+            title,
+            style: TextStyle(color: color, fontSize: 11.5),
           ),
         ],
       ),

@@ -1,5 +1,9 @@
+import 'package:capstone_frontend/models/user.dart';
+import 'package:capstone_frontend/providers/auth_provider.dart';
 import 'package:capstone_frontend/widgets/custom_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 class RegisterTab extends StatelessWidget {
   RegisterTab({Key? key}) : super(key: key);
@@ -61,7 +65,7 @@ class RegisterTab extends StatelessWidget {
                           hintText: "First Name",
                           hiddenText: false,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         CustomInputField(
@@ -78,7 +82,7 @@ class RegisterTab extends StatelessWidget {
                     CustomInputField(
                       width: 325,
                       controller: _username,
-                      icon: Icon(Icons.person),
+                      icon: const Icon(Icons.person),
                       hintText: "Username",
                       hiddenText: false,
                     ),
@@ -88,7 +92,7 @@ class RegisterTab extends StatelessWidget {
                     CustomInputField(
                       width: 325,
                       controller: _password,
-                      icon: Icon(Icons.key),
+                      icon: const Icon(Icons.key),
                       hintText: "Password",
                       hiddenText: true,
                     ),
@@ -99,6 +103,16 @@ class RegisterTab extends StatelessWidget {
                       width: 325,
                       onPressed: () {
                         // register function here
+                        context.read<AuthProvider>().register(
+                              user: User(
+                                first_name: _firstName.text,
+                                last_name: _lastName.text,
+                                username: _username.text,
+                                password: _password.text,
+                              ),
+                            );
+                        print("SUCCESS");
+                        context.go("/home");
                       },
                       buttonText: "Register",
                     ),
