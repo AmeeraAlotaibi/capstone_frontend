@@ -19,7 +19,7 @@ class _LoginTabState extends State<LoginTab> {
 
   String _password = "";
 
-  bool isPasswordVisible = false;
+  bool isPasswordVisible = true;
 
   @override
   Widget build(BuildContext context) {
@@ -102,8 +102,8 @@ class _LoginTabState extends State<LoginTab> {
                             });
                           },
                           icon: isPasswordVisible
-                              ? Icon(Icons.visibility)
-                              : Icon(Icons.visibility_off),
+                              ? const Icon(Icons.visibility)
+                              : const Icon(Icons.visibility_off),
                         ),
                       ),
                     ),
@@ -122,6 +122,7 @@ class _LoginTabState extends State<LoginTab> {
                                   password: _password,
                                 ),
                               );
+
                           context.go("/home");
                         } else {
                           print("Unexpected Error");

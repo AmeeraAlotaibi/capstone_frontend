@@ -5,15 +5,25 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-class RegisterTab extends StatelessWidget {
+class RegisterTab extends StatefulWidget {
   RegisterTab({Key? key}) : super(key: key);
 
+  @override
+  State<RegisterTab> createState() => _RegisterTabState();
+}
+
+class _RegisterTabState extends State<RegisterTab> {
   var _firstName = TextEditingController();
+
   var _lastName = TextEditingController();
+
   var _username = TextEditingController();
+
   var _password = TextEditingController();
+
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  bool isPasswordVisible = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,6 +137,7 @@ class RegisterTab extends StatelessWidget {
                     ),
                     // **** password ****
                     TextFormField(
+                      obscureText: isPasswordVisible,
                       controller: _password,
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -137,9 +148,19 @@ class RegisterTab extends StatelessWidget {
                       },
                       onSaved: (value) =>
                           _password = value! as TextEditingController,
-                      decoration: const InputDecoration(
-                        prefixIcon: Icon(Icons.key),
+                      decoration: InputDecoration(
+                        prefixIcon: const Icon(Icons.key),
                         hintText: "Password",
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              isPasswordVisible = !isPasswordVisible;
+                            });
+                          },
+                          icon: isPasswordVisible
+                              ? const Icon(Icons.visibility)
+                              : const Icon(Icons.visibility_off),
+                        ),
                       ),
                     ),
                     const SizedBox(
