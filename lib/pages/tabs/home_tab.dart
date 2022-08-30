@@ -1,9 +1,9 @@
-import 'package:capstone_frontend/widgets/custom_widgets.dart';
-import 'package:capstone_frontend/widgets/profile_components.dart';
-import 'package:capstone_frontend/widgets/subscription_card.dart';
+import 'package:capstone_frontend/widgets/generic/horizontal_div.dart';
+import 'package:capstone_frontend/widgets/generic/section_heading.dart';
+import 'package:capstone_frontend/widgets/cards/subscription_card.dart';
 import 'package:flutter/material.dart';
-import 'package:capstone_frontend/widgets/schedule_card.dart';
-import 'package:capstone_frontend/widgets/welcome_card.dart';
+import 'package:capstone_frontend/widgets/cards/schedule_card.dart';
+import 'package:capstone_frontend/widgets/cards/welcome_card.dart';
 
 class HomeTab extends StatelessWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -12,21 +12,19 @@ class HomeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25),
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
         child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(
-                height: 125,
-              ),
               WelcomeCard(
                 username: "Ameera".toUpperCase(),
                 avatar:
                     "https://millingtontownship.com/wp-content/uploads/2021/01/default.jpg",
               ),
               const HorizontalLine(),
+              // TODAYS SCHEDULE HEADING
               const SectionHeadings(
                   icon: Icon(
                     Icons.today,
@@ -40,6 +38,7 @@ class HomeTab extends StatelessWidget {
                 sets: 5,
                 workout: "Push-ups",
               ),
+              // MY SUBSCRIPTION HEADING
               const SectionHeadings(
                   icon: Icon(
                     Icons.monetization_on,

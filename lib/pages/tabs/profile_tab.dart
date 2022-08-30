@@ -1,7 +1,9 @@
-import 'package:capstone_frontend/widgets/custom_widgets.dart';
-import 'package:capstone_frontend/widgets/profile_components.dart';
+import 'package:capstone_frontend/widgets/cards/details_container.dart';
+import 'package:capstone_frontend/widgets/generic/edit_circle_button.dart';
+import 'package:capstone_frontend/widgets/generic/section_heading.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../widgets/generic/horizontal_div.dart';
 
 class ProfileTab extends StatelessWidget {
   const ProfileTab({Key? key}) : super(key: key);
@@ -9,18 +11,19 @@ class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          width: double.infinity,
-          margin: const EdgeInsets.only(top: 125),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Stack(
                 children: [
-                  ProfileAvatar(
-                    avatar:
-                        "https://millingtontownship.com/wp-content/uploads/2021/01/default.jpg",
+                  CircleAvatar(
+                    radius: 60,
+                    backgroundColor: Colors.grey[400],
+                    backgroundImage: NetworkImage(
+                        "https://millingtontownship.com/wp-content/uploads/2021/01/default.jpg"),
                   ),
                   Positioned(
                       bottom: 0,
@@ -32,53 +35,51 @@ class ProfileTab extends StatelessWidget {
                       )),
                 ],
               ),
-              Container(
-                width: 350,
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                margin: const EdgeInsets.only(top: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Ameera Alotaibi",
-                      style: Theme.of(context).textTheme.headline6,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Text(
+                    "Ameera Alotaibi",
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                  const SizedBox(
+                    height: 2,
+                  ),
+                  Text(
+                    "@MeeraReed",
+                    style: Theme.of(context).textTheme.headline2,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "lorem ipsum, dolor sit amet, consectetur elit, seddo eisumnd lorem ipsum dolor sit.",
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyText1,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  DetailsContainer(
+                    title1: "Height",
+                    subtitle1: "165CM",
+                    title2: "Age",
+                    subtitle2: "25YRS",
+                    title3: "Weight",
+                    subtitle3: "85KG",
+                  ),
+                  const SectionHeadings(
+                    icon: Icon(
+                      Icons.monitor_heart,
+                      color: Color(0xFF4c4c4c),
                     ),
-                    const SizedBox(
-                      height: 2,
-                    ),
-                    Text(
-                      "@MeeraReed",
-                      style: Theme.of(context).textTheme.headline2,
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "lorem ipsum, dolor sit amet, consectetur elit, seddo eisumnd lorem ipsum dolor sit.",
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    DetailsRow(
-                      height: "155",
-                      age: "25",
-                      weight: "75",
-                    ),
-                    const SizedBox(
-                      width: 350,
-                      child: SectionHeadings(
-                        icon: Icon(
-                          Icons.monitor_heart,
-                          color: Color(0xFF4c4c4c),
-                        ),
-                        heading: "Statistics",
-                      ),
-                    ),
-                    const HorizontalLine(),
-                  ],
-                ),
+                    heading: "Statistics",
+                  ),
+                  const HorizontalLine(),
+                ],
               ),
             ],
           ),

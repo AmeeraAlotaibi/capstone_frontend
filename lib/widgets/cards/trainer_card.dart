@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class TrainerCard extends StatelessWidget {
-  TrainerCard(
-      {Key? key,
-      required this.trainer,
-      required this.avatar,
-      required this.onTap})
-      : super(key: key);
+  const TrainerCard({
+    Key? key,
+    required this.trainer,
+    required this.avatar,
+    required this.onTap,
+  }) : super(key: key);
 
   final String trainer;
   final String avatar;
@@ -15,8 +15,8 @@ class TrainerCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
-      splashColor: Colors.white.withOpacity(0.3),
-      highlightColor: Colors.black.withOpacity(0.3),
+      splashColor: Colors.white.withOpacity(0.5),
+      highlightColor: Colors.black.withOpacity(0.5),
       child: Ink(
         width: 150,
         padding: const EdgeInsets.only(bottom: 10),
@@ -31,7 +31,6 @@ class TrainerCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              width: 150,
               height: 150,
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
@@ -46,51 +45,59 @@ class TrainerCard extends StatelessWidget {
               height: 5,
             ),
             Text(
-              "  ${trainer}",
+              "  $trainer",
               style: const TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 16,
               ),
             ),
+            const SizedBox(
+              height: 5,
+            ),
+            // will be replace later
             Row(
-              children: [
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
                 SizedBox(
-                  width: 5,
+                  width: 6,
                 ),
                 Icon(
                   Icons.star,
                   color: Colors.amber,
-                  size: 20,
+                  size: 15,
                 ),
                 Icon(
                   Icons.star,
                   color: Colors.amber,
-                  size: 20,
+                  size: 15,
                 ),
                 Icon(
                   Icons.star,
                   color: Colors.amber,
-                  size: 20,
+                  size: 15,
                 ),
                 Icon(
                   Icons.star,
                   color: Colors.amber,
-                  size: 20,
+                  size: 15,
                 ),
                 Icon(
                   Icons.star,
                   color: Colors.grey,
-                  size: 20,
+                  size: 15,
                 ),
                 SizedBox(
                   width: 5,
                 ),
                 Text(
                   "4.0",
-                  style: Theme.of(context).textTheme.subtitle2,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Color(0xFF4c4c4c),
+                  ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

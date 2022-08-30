@@ -15,7 +15,7 @@ class AuthService {
       token = res.data["access"];
       print("register==== $token");
     } on DioError catch (error) {
-      print(error);
+      print(error.message);
     }
     return token;
   }

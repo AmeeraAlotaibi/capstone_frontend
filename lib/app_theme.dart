@@ -104,4 +104,37 @@ ThemeData myTheme = ThemeData(
       fontWeight: FontWeight.w700,
     ),
   ),
+
+  // ************ INPUT DECORATION THEME
+  inputDecorationTheme: InputDecorationTheme(
+    contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+    hintStyle: const TextStyle(
+      color: Color.fromARGB(255, 184, 184, 184),
+    ),
+    suffixStyle: const TextStyle(
+      color: Color.fromARGB(255, 150, 150, 150),
+    ),
+    filled: true,
+    fillColor: Colors.white,
+    border: OutlineInputBorder(
+      borderSide: const BorderSide(
+        width: 1,
+        color: Color.fromARGB(96, 60, 60, 60),
+      ),
+      borderRadius: BorderRadius.circular(5),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: const BorderSide(
+        width: 2,
+        color: Color(0xFF7860ff),
+      ),
+      borderRadius: BorderRadius.circular(5),
+    ),
+    errorBorder: const OutlineInputBorder(
+      borderSide: BorderSide(
+        color: Colors.red,
+        width: 1,
+      ),
+    ),
+  ),
 );
