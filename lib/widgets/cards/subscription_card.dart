@@ -1,4 +1,4 @@
-import 'package:capstone_frontend/widgets/custom_widgets.dart';
+import 'package:capstone_frontend/widgets/generic/regular_button.dart';
 import 'package:flutter/material.dart';
 
 class SubscriptionCard extends StatelessWidget {
@@ -77,7 +77,7 @@ class SubscriptionCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              CancelButton(
+              GenericButton(
                 width: 70,
                 onPressed: onPressed,
                 buttonText: "Cancel",
