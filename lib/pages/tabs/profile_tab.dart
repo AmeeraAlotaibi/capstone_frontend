@@ -3,7 +3,7 @@ import 'package:capstone_frontend/widgets/generic/edit_circle_button.dart';
 import 'package:capstone_frontend/widgets/generic/section_heading.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../widgets/generic/horizontal_div.dart';
+import '../../widgets/generic/dividers.dart';
 
 class ProfileTab extends StatelessWidget {
   const ProfileTab({Key? key}) : super(key: key);
@@ -41,9 +41,21 @@ class ProfileTab extends StatelessWidget {
                   const SizedBox(
                     height: 15,
                   ),
-                  Text(
-                    "Ameera Alotaibi",
-                    style: Theme.of(context).textTheme.headline6,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Ameera Alotaibi",
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Text(
+                        "O+",
+                        style: Theme.of(context).textTheme.caption,
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     height: 2,
@@ -71,14 +83,14 @@ class ProfileTab extends StatelessWidget {
                     title3: "Weight",
                     subtitle3: "85KG",
                   ),
-                  const SectionHeadings(
+                  SectionHeadings(
                     icon: Icon(
                       Icons.monitor_heart,
-                      color: Color(0xFF4c4c4c),
+                      color: Theme.of(context).canvasColor,
                     ),
                     heading: "Statistics",
                   ),
-                  const HorizontalLine(),
+                  const HorizontalDiv(),
                 ],
               ),
             ],

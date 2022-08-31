@@ -80,7 +80,7 @@ class _LoginTabState extends State<LoginTab> {
                       ),
                     ),
                     const SizedBox(
-                      height: 10,
+                      height: 15,
                     ),
                     TextFormField(
                       obscureText: isPasswordVisible,
@@ -108,7 +108,7 @@ class _LoginTabState extends State<LoginTab> {
                       ),
                     ),
                     const SizedBox(
-                      height: 10,
+                      height: 15,
                     ),
                     CustomButton(
                       width: 350,

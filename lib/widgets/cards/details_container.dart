@@ -1,3 +1,4 @@
+import 'package:capstone_frontend/widgets/generic/dividers.dart';
 import 'package:flutter/material.dart';
 
 class DetailsContainer extends StatelessWidget {
@@ -31,10 +32,7 @@ class DetailsContainer extends StatelessWidget {
             children: [
               Text(
                 title1,
-                style: TextStyle(
-                  color: Colors.grey[700],
-                  fontSize: 14,
-                ),
+                style: Theme.of(context).textTheme.bodyText2,
               ),
               const SizedBox(
                 height: 5,
@@ -46,11 +44,7 @@ class DetailsContainer extends StatelessWidget {
             ],
           ),
           // divider
-          Container(
-            width: 1,
-            height: 50,
-            color: Colors.grey[300],
-          ),
+          const VerticalDiv(),
 
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -58,10 +52,7 @@ class DetailsContainer extends StatelessWidget {
             children: [
               Text(
                 title2,
-                style: TextStyle(
-                  color: Colors.grey[700],
-                  fontSize: 14,
-                ),
+                style: Theme.of(context).textTheme.bodyText2,
               ),
               const SizedBox(
                 height: 5,
@@ -73,11 +64,7 @@ class DetailsContainer extends StatelessWidget {
             ],
           ),
 
-          Container(
-            width: 1,
-            height: 50,
-            color: Colors.grey[300],
-          ),
+          const VerticalDiv(),
 
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -85,10 +72,7 @@ class DetailsContainer extends StatelessWidget {
             children: [
               Text(
                 title3,
-                style: TextStyle(
-                  color: Colors.grey[700],
-                  fontSize: 14,
-                ),
+                style: Theme.of(context).textTheme.bodyText2,
               ),
               const SizedBox(
                 height: 5,

@@ -29,6 +29,11 @@ class AuthService {
         "trainee-login/",
         data: user.toJson(),
       );
+      // still in progress
+      if (res.statusCode == 401) {
+        throw "This username does not exist";
+      }
+      // still in progress
       token = res.data["access"];
       print("login==== $token");
     } on DioError catch (error) {

@@ -23,12 +23,9 @@ class BioField extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           "Bio: ",
-          style: TextStyle(
-            color: Color(0xFF4c4c4c),
-            fontSize: 14,
-          ),
+          style: Theme.of(context).textTheme.bodyText2,
         ),
         const SizedBox(
           height: 7.5,
@@ -41,35 +38,9 @@ class BioField extends StatelessWidget {
             maxLines: null,
             validator: validator,
             controller: controller,
-            decoration: InputDecoration(
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 10, vertical: 0),
+            decoration: const InputDecoration(
+              contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
               hintText: "Write about yourself...",
-              hintMaxLines: 1,
-              hintStyle: const TextStyle(
-                color: Color.fromARGB(255, 184, 184, 184),
-              ),
-              prefixIcon: icon,
-              suffix: suffix,
-              suffixStyle: const TextStyle(
-                color: Color.fromARGB(255, 150, 150, 150),
-              ),
-              filled: true,
-              fillColor: Colors.white,
-              border: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  width: 1,
-                  color: Color.fromARGB(96, 60, 60, 60),
-                ),
-                borderRadius: BorderRadius.circular(5),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  width: 2,
-                  color: Theme.of(context).primaryColor,
-                ),
-                borderRadius: BorderRadius.circular(5),
-              ),
             ),
           ),
         ),

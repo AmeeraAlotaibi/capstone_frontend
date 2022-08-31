@@ -1,4 +1,4 @@
-import 'package:capstone_frontend/widgets/generic/horizontal_div.dart';
+import 'package:capstone_frontend/widgets/generic/dividers.dart';
 import 'package:flutter/material.dart';
 
 class ChatTab extends StatelessWidget {
@@ -13,10 +13,10 @@ class ChatTab extends StatelessWidget {
           child: Column(
             children: [
               Text(
-                "Adam Scott",
+                "Geralt of Rivia",
                 style: Theme.of(context).textTheme.headline6,
               ),
-              const HorizontalLine(),
+              const HorizontalDiv(),
             ],
           ),
         ),

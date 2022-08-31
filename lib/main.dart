@@ -4,10 +4,13 @@ import 'package:capstone_frontend/pages/home_page.dart';
 import 'package:capstone_frontend/pages/trainer_profile.dart';
 import 'package:capstone_frontend/pages/trainers_list_page.dart';
 import 'package:capstone_frontend/providers/auth_provider.dart';
+import 'package:capstone_frontend/providers/theme_provider.dart';
+import 'package:capstone_frontend/providers/trainer_provider.dart';
+import 'package:capstone_frontend/themes/dark_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'app_theme.dart';
+import 'themes/light_theme.dart';
 
 void main() {
   runApp(
@@ -15,6 +18,12 @@ void main() {
       providers: [
         ChangeNotifierProvider<AuthProvider>(
           create: (_) => AuthProvider(),
+        ),
+        ChangeNotifierProvider<TrainerProvider>(
+          create: (_) => TrainerProvider(),
+        ),
+        ChangeNotifierProvider<ThemeProvider>(
+          create: (_) => ThemeProvider(),
         ),
       ],
       child: MyApp(),
@@ -28,9 +37,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      theme: myTheme,
+      themeMode: themeProvider.themeMode,
+      theme: lightTheme,
+      darkTheme: darkTheme,
       // GO ROUTER
       routeInformationParser: _router.routeInformationParser,
       routerDelegate: _router.routerDelegate,

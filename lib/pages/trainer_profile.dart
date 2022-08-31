@@ -52,19 +52,15 @@ class TrainerProfile extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       "About: ",
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: Color(0xFF4c4c4c),
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     const SizedBox(
                       height: 7.5,
                     ),
                     Text(
-                      "Lorem ipsum dolor ist, lorem lorenf kajfi faithe dfjlkei gljdfa",
+                      "Lorem ipsum dolor ist, lorem lorenf kajfi faithe dfjlkei gljdfa, lorem ipsum is near us all, their fajfalkjei  lkjfiw.",
                       style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ],

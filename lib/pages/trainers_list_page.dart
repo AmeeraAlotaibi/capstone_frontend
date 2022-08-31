@@ -1,38 +1,18 @@
+import 'package:capstone_frontend/providers/trainer_provider.dart';
 import 'package:capstone_frontend/widgets/cards/trainer_card.dart';
+import 'package:capstone_frontend/widgets/skeleton_loading/gridview_loading.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class TrainersListPage extends StatelessWidget {
   TrainersListPage({Key? key}) : super(key: key);
-  final controller = ScrollController();
-  // DELETE LATER *******************
-  final List<String> trainer = [
-    "Terry Crews",
-    "Tony Stark",
-    "Jake Peralta",
-    "Terry Crews",
-    "Tony Stark",
-    "Jake Peralta",
-    "Terry Crews",
-    "Tony Stark",
-    "Jake Peralta",
-  ];
-  final List<String> avatar = [
-    "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp",
-    "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp",
-    "https://aveurope.es/wp-content/uploads/2016/11/btx-avatar-placeholder-01.jpg",
-    "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp",
-    "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp",
-    "https://aveurope.es/wp-content/uploads/2016/11/btx-avatar-placeholder-01.jpg",
-    "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp",
-    "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp",
-    "https://aveurope.es/wp-content/uploads/2016/11/btx-avatar-placeholder-01.jpg",
-  ];
-  // DELETE LATER *******************
+  var controller = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("All Trainers"),
+        title: const Text("All Trainers"),
         actions: [
           IconButton(
             onPressed: () {
@@ -48,24 +28,45 @@ class TrainersListPage extends StatelessWidget {
           ),
         ],
       ),
-      body: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 8,
-          crossAxisSpacing: 8,
-          childAspectRatio: 1 / 1.20,
-        ),
-        padding: const EdgeInsets.all(15),
-        controller: controller,
-        itemCount: avatar.length,
-        itemBuilder: (context, index) {
-          return TrainerCard(
-            trainer: trainer[index],
-            avatar: avatar[index],
-            onTap: () {},
-          );
-        },
-      ),
+      body: FutureBuilder(
+          future: context.watch<TrainerProvider>().getTrainers(),
+          builder: (context, dataSnapshot) {
+            if (dataSnapshot.connectionState == ConnectionState.waiting) {
+              // loading skeleton
+              return GridLoading(
+                controller: controller,
+              );
+            } else {
+              // start of future builder
+              return Consumer<TrainerProvider>(
+                builder: ((context, trainer, child) {
+                  return GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 8,
+                      crossAxisSpacing: 8,
+                      childAspectRatio: 1 / 1.20,
+                    ),
+                    padding: const EdgeInsets.all(15),
+                    controller: controller,
+                    itemCount: trainer.trainers.length,
+                    itemBuilder: (context, index) {
+                      return TrainerCard(
+                        trainer:
+                            "${trainer.trainers[index].user.first_name!} ${trainer.trainers[index].user.last_name!}",
+                        avatar:
+                            "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp",
+                        onTap: () {
+                          // push to trainer profile here
+                        },
+                      );
+                    },
+                  );
+                }),
+              );
+            }
+          }),
     );
   }
 }

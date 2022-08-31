@@ -15,7 +15,7 @@ class ScheduleCard extends StatelessWidget {
       width: 200,
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(5),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -29,22 +29,14 @@ class ScheduleCard extends StatelessWidget {
           ),
           Text(
             "${sets} set(s) of",
-            style: const TextStyle(
-              color: Color(0xFF4c4c4c),
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.headline6,
           ),
           Text(
             workout,
-            style: const TextStyle(
-              color: Color(0xFF4c4c4c),
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-            ),
+            style: Theme.of(context).textTheme.headline4,
           ),
           const SizedBox(
-            height: 20,
+            height: 15,
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,

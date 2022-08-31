@@ -21,9 +21,9 @@ class TrainerCard extends StatelessWidget {
         width: 150,
         padding: const EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).scaffoldBackgroundColor,
           border: Border.all(
-            color: const Color.fromARGB(255, 184, 184, 184),
+            color: Theme.of(context).dividerColor,
             width: 1,
           ),
         ),
@@ -34,7 +34,7 @@ class TrainerCard extends StatelessWidget {
               height: 150,
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: Colors.grey[200],
+                color: Theme.of(context).dividerColor,
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(avatar),
@@ -57,8 +57,8 @@ class TrainerCard extends StatelessWidget {
             // will be replace later
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                SizedBox(
+              children: [
+                const SizedBox(
                   width: 6,
                 ),
                 Icon(
@@ -90,10 +90,10 @@ class TrainerCard extends StatelessWidget {
                   width: 5,
                 ),
                 Text(
-                  "4.0",
+                  "4.65",
                   style: TextStyle(
                     fontSize: 12,
-                    color: Color(0xFF4c4c4c),
+                    color: Theme.of(context).canvasColor,
                   ),
                 ),
               ],

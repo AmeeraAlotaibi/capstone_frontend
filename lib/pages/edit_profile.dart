@@ -188,38 +188,20 @@ class _EditProfileState extends State<EditProfile> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       "Blood Type: ",
-                      style: TextStyle(
-                        color: Color(0xFF4c4c4c),
-                        fontSize: 14,
-                      ),
+                      style: Theme.of(context).textTheme.bodyText2,
                     ),
                     const SizedBox(
                       height: 7.5,
                     ),
                     DropdownButtonFormField<String>(
                       isExpanded: true,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 0),
-                        prefixIcon: const Icon(
+                      decoration: const InputDecoration(
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                        prefixIcon: Icon(
                           Icons.bloodtype,
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: const BorderSide(
-                            color: Color(0xFF4c4c4c),
-                          ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: BorderSide(
-                            width: 2,
-                            color: Theme.of(context).primaryColor,
-                          ),
                         ),
                       ),
                       value: selectedItem,
@@ -239,9 +221,12 @@ class _EditProfileState extends State<EditProfile> {
                 const SizedBox(
                   height: 15,
                 ),
-                BioField(width: 350, controller: _bio),
+                BioField(
+                  width: 350,
+                  controller: _bio,
+                ),
                 const SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 // save button
                 CustomButton(
@@ -250,6 +235,9 @@ class _EditProfileState extends State<EditProfile> {
                   onPressed: () {
                     // save profile function here
                   },
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
               ],
             ),
