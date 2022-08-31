@@ -18,12 +18,6 @@ class _AuthPageState extends State<AuthPage> {
         appBar: AppBar(
           toolbarHeight: 0,
           bottom: TabBar(
-            labelColor: Theme.of(context).primaryColor,
-            labelStyle: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w400,
-            ),
-            unselectedLabelColor: const Color(0xFF4c4c4c),
             indicatorColor: Theme.of(context).primaryColor,
             tabs: const [
               Tab(

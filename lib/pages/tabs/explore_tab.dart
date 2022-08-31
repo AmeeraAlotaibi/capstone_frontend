@@ -45,9 +45,9 @@ class ExploreTab extends StatelessWidget {
                 controller: _query,
               ),
               SectionHeadings(
-                icon: const Icon(
+                icon: Icon(
                   Icons.people,
-                  color: Color(0xFF4c4c4c),
+                  color: Theme.of(context).canvasColor,
                 ),
                 heading: "Popular Trainers",
                 trailing: TextButton(
@@ -55,10 +55,10 @@ class ExploreTab extends StatelessWidget {
                     // push to list of trainers here
                     context.push("/trainers-list");
                   },
-                  child: const Text(
+                  child: Text(
                     "see all",
                     style: TextStyle(
-                      color: Color(0xFF4c4c4c),
+                      color: Theme.of(context).canvasColor,
                       fontSize: 14,
                     ),
                   ),
@@ -85,10 +85,10 @@ class ExploreTab extends StatelessWidget {
               ),
               // end of will be replaced
 
-              const SectionHeadings(
+              SectionHeadings(
                 icon: Icon(
                   Icons.sports_gymnastics,
-                  color: Color(0xFF4c4c4c),
+                  color: Theme.of(context).canvasColor,
                 ),
                 heading: "Workouts",
               ),

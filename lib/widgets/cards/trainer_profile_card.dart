@@ -18,7 +18,7 @@ class TrainerProfileCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey[100],
+        color: Theme.of(context).dividerColor,
         borderRadius: BorderRadius.circular(5),
       ),
       child: Row(
@@ -48,18 +48,11 @@ class TrainerProfileCard extends StatelessWidget {
                 children: [
                   Text(
                     fullName,
-                    style: const TextStyle(
-                      color: Color.fromARGB(255, 42, 42, 42),
-                      fontSize: 20.5,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: Theme.of(context).textTheme.headline5,
                   ),
                   Text(
                     username,
-                    style: const TextStyle(
-                      color: Color(0xFF4c4c4c),
-                      fontSize: 16,
-                    ),
+                    style: Theme.of(context).textTheme.subtitle1,
                   ),
                   const SizedBox(
                     height: 15,

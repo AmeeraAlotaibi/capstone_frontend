@@ -17,10 +17,7 @@ class InputLabel extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
-            color: Color(0xFF4c4c4c),
-            fontSize: 14,
-          ),
+          style: Theme.of(context).textTheme.bodyText2,
         ),
         const SizedBox(
           height: 7.5,

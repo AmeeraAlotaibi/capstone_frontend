@@ -1,4 +1,4 @@
-import 'package:capstone_frontend/widgets/generic/horizontal_div.dart';
+import 'package:capstone_frontend/widgets/generic/dividers.dart';
 import 'package:capstone_frontend/widgets/generic/section_heading.dart';
 import 'package:capstone_frontend/widgets/cards/subscription_card.dart';
 import 'package:flutter/material.dart';
@@ -23,14 +23,15 @@ class HomeTab extends StatelessWidget {
                 avatar:
                     "https://millingtontownship.com/wp-content/uploads/2021/01/default.jpg",
               ),
-              const HorizontalLine(),
+              const HorizontalDiv(),
               // TODAYS SCHEDULE HEADING
-              const SectionHeadings(
-                  icon: Icon(
-                    Icons.today,
-                    color: Color(0xFF4c4c4c),
-                  ),
-                  heading: "Today's Schedule"),
+              SectionHeadings(
+                icon: Icon(
+                  Icons.today,
+                  color: Theme.of(context).canvasColor,
+                ),
+                heading: "Today's Schedule",
+              ),
               const SizedBox(
                 height: 15,
               ),
@@ -39,10 +40,10 @@ class HomeTab extends StatelessWidget {
                 workout: "Push-ups",
               ),
               // MY SUBSCRIPTION HEADING
-              const SectionHeadings(
+              SectionHeadings(
                   icon: Icon(
                     Icons.monetization_on,
-                    color: Color(0xFF4c4c4c),
+                    color: Theme.of(context).canvasColor,
                   ),
                   heading: "My Subscription"),
               const SizedBox(

@@ -22,16 +22,8 @@ class SubscriptionCard extends StatelessWidget {
       padding: const EdgeInsets.only(left: 30, right: 30, top: 25, bottom: 10),
       width: 350,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-          colors: [
-            Color.fromARGB(255, 218, 203, 255),
-            Theme.of(context).cardColor,
-          ],
-        ),
         color: Theme.of(context).cardColor,
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(5),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

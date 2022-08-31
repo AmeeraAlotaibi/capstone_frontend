@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class WelcomeCard extends StatelessWidget {
   WelcomeCard({Key? key, required this.username, required this.avatar})
@@ -20,13 +18,9 @@ class WelcomeCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Hello there,",
-                style: TextStyle(
-                  fontSize: 20,
-                  letterSpacing: 1,
-                  color: Color.fromARGB(255, 184, 184, 184),
-                ),
+                style: Theme.of(context).textTheme.caption,
               ),
               Text(
                 username,
