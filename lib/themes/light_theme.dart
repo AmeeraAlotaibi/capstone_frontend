@@ -156,7 +156,7 @@ ThemeData lightTheme = ThemeData(
       fontSize: 12,
       fontWeight: FontWeight.bold,
     ),
-    border: OutlineInputBorder(
+    enabledBorder: OutlineInputBorder(
       borderSide: const BorderSide(
         width: 1,
         color: Color.fromARGB(255, 184, 184, 184),

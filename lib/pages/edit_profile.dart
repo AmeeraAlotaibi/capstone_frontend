@@ -197,6 +197,7 @@ class _EditProfileState extends State<EditProfile> {
                     ),
                     DropdownButtonFormField<String>(
                       isExpanded: true,
+                      dropdownColor: Theme.of(context).dividerColor,
                       decoration: const InputDecoration(
                         contentPadding:
                             EdgeInsets.symmetric(horizontal: 15, vertical: 0),
