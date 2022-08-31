@@ -101,18 +101,14 @@ class ExploreTab extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   WorkoutBox(
-                    bgColor: Theme.of(context).cardColor,
-                    color: Theme.of(context).primaryColor,
-                    icon: FaIcon(
+                    icon: const FaIcon(
                       FontAwesomeIcons.personRunning,
-                      color: Theme.of(context).primaryColor,
+                      color: Color.fromARGB(255, 153, 25, 239),
                       size: 35,
                     ),
                     title: "Acrobatic",
                   ),
                   WorkoutBox(
-                    bgColor: const Color.fromARGB(255, 223, 244, 255),
-                    color: const Color.fromARGB(255, 25, 143, 239),
                     icon: const FaIcon(
                       FontAwesomeIcons.personBiking,
                       color: Color.fromARGB(255, 25, 143, 239),
@@ -121,8 +117,6 @@ class ExploreTab extends StatelessWidget {
                     title: "Biking",
                   ),
                   WorkoutBox(
-                    bgColor: const Color.fromARGB(255, 255, 250, 230),
-                    color: const Color.fromARGB(255, 244, 200, 3),
                     icon: const FaIcon(
                       FontAwesomeIcons.tableTennisPaddleBall,
                       color: Color.fromARGB(255, 244, 200, 3),
@@ -131,8 +125,6 @@ class ExploreTab extends StatelessWidget {
                     title: "sports",
                   ),
                   WorkoutBox(
-                    bgColor: const Color.fromARGB(255, 255, 222, 245),
-                    color: const Color.fromARGB(255, 210, 22, 132),
                     icon: const FaIcon(
                       FontAwesomeIcons.weightHanging,
                       color: Color.fromARGB(255, 210, 22, 132),

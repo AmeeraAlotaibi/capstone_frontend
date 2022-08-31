@@ -4,15 +4,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class WorkoutBox extends StatelessWidget {
   WorkoutBox({
     Key? key,
-    required this.bgColor,
-    required this.color,
     required this.title,
     required this.icon,
   }) : super(key: key);
   final String title;
   final FaIcon icon;
-  final Color bgColor;
-  final Color color;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +16,7 @@ class WorkoutBox extends StatelessWidget {
       height: 80,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: bgColor,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(5),
       ),
       child: Column(
@@ -32,7 +28,10 @@ class WorkoutBox extends StatelessWidget {
           ),
           Text(
             title,
-            style: TextStyle(color: color, fontSize: 11.5),
+            style: TextStyle(
+              color: Theme.of(context).canvasColor,
+              fontSize: 11.5,
+            ),
           ),
         ],
       ),
