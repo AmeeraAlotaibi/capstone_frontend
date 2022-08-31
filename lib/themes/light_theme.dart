@@ -64,7 +64,7 @@ ThemeData lightTheme = ThemeData(
       fontSize: 10,
     ),
     showSelectedLabels: true,
-    showUnselectedLabels: true,
+    showUnselectedLabels: false,
   ),
 
   // TEXT STYLES

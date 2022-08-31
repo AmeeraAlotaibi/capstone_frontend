@@ -58,14 +58,14 @@ ThemeData darkTheme = ThemeData(
     ),
     selectedLabelStyle: TextStyle(
       color: Color(0xFF7860ff),
-      fontSize: 12,
+      fontSize: 10,
     ),
     unselectedLabelStyle: TextStyle(
       color: Color.fromARGB(255, 122, 129, 174),
-      fontSize: 12,
+      fontSize: 10,
     ),
     showSelectedLabels: true,
-    showUnselectedLabels: true,
+    showUnselectedLabels: false,
   ),
 
   // TEXT STYLES
