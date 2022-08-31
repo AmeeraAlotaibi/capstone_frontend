@@ -152,6 +152,10 @@ ThemeData lightTheme = ThemeData(
     ),
     filled: true,
     fillColor: Colors.white,
+    errorStyle: const TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.bold,
+    ),
     border: OutlineInputBorder(
       borderSide: const BorderSide(
         width: 1,

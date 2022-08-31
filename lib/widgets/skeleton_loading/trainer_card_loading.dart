@@ -13,7 +13,7 @@ class TrainerCardLoading extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 5),
       decoration: BoxDecoration(
         border: Border.all(
-          color: const Color.fromARGB(255, 230, 230, 230),
+          color: Theme.of(context).cardColor,
         ),
       ),
       child: Column(
@@ -25,7 +25,7 @@ class TrainerCardLoading extends StatelessWidget {
               height: 150,
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: Colors.grey[200],
+                color: Theme.of(context).dividerColor,
               ),
             ),
           ),
@@ -38,7 +38,7 @@ class TrainerCardLoading extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               width: 125,
               decoration: BoxDecoration(
-                color: Colors.grey[200],
+                color: Theme.of(context).dividerColor,
                 borderRadius: BorderRadius.circular(5),
               ),
             ),
@@ -58,7 +58,7 @@ class TrainerCardLoading extends StatelessWidget {
                   padding: const EdgeInsets.all(8),
                   width: 65,
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Theme.of(context).dividerColor,
                     borderRadius: BorderRadius.circular(5),
                   ),
                 ),
@@ -71,7 +71,7 @@ class TrainerCardLoading extends StatelessWidget {
                   padding: const EdgeInsets.all(8),
                   width: 35,
                   decoration: BoxDecoration(
-                    color: Colors.grey[200],
+                    color: Theme.of(context).dividerColor,
                     borderRadius: BorderRadius.circular(5),
                   ),
                 ),

@@ -6,15 +6,17 @@ part 'trainer.g.dart';
 @JsonSerializable()
 class Trainer {
   User user;
-  int age;
-  int experience;
-  String specialty;
+  int? age;
+  int? experience;
+  String? specialty;
+  String? image;
 
   Trainer({
     required this.user,
-    required this.age,
-    required this.experience,
-    required this.specialty,
+     this.age,
+     this.experience,
+     this.specialty,
+     this.image,
   });
 
   factory Trainer.fromJson(Map<String, dynamic> json) =>

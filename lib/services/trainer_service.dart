@@ -12,6 +12,7 @@ class TrainerService {
       trainers = (res.data as List)
           .map((trainer) => Trainer.fromJson(trainer))
           .toList();
+      // print(trainers[0].image);
     } on DioError catch (error) {
       print(error);
     }

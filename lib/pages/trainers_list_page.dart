@@ -56,7 +56,7 @@ class TrainersListPage extends StatelessWidget {
                         trainer:
                             "${trainer.trainers[index].user.first_name!} ${trainer.trainers[index].user.last_name!}",
                         avatar:
-                            "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp",
+                            trainer.trainers[index].image ?? "https://t4.ftcdn.net/jpg/00/64/67/63/240_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
                         onTap: () {
                           // push to trainer profile here
                         },
