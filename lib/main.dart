@@ -1,3 +1,4 @@
+import 'package:capstone_frontend/models/trainer.dart';
 import 'package:capstone_frontend/pages/auth_page.dart';
 import 'package:capstone_frontend/pages/edit_profile.dart';
 import 'package:capstone_frontend/pages/home_page.dart';
@@ -67,7 +68,8 @@ class MyApp extends StatelessWidget {
       ),
       GoRoute(
         path: "/trainer-profile",
-        builder: (context, state) => TrainerProfile(),
+        builder: (context, state) =>
+            TrainerProfile(trainer: state.extra as Trainer),
       ),
       GoRoute(
         path: "/trainers-list",

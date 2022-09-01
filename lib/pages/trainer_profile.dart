@@ -1,11 +1,12 @@
+import 'package:capstone_frontend/models/trainer.dart';
 import 'package:capstone_frontend/widgets/cards/details_container.dart';
 import 'package:capstone_frontend/widgets/cards/trainer_profile_card.dart';
 import 'package:capstone_frontend/widgets/generic/gradient_button.dart';
 import 'package:flutter/material.dart';
 
 class TrainerProfile extends StatelessWidget {
-  const TrainerProfile({Key? key}) : super(key: key);
-
+  TrainerProfile({Key? key, required this.trainer}) : super(key: key);
+  Trainer trainer;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,11 +39,11 @@ class TrainerProfile extends StatelessWidget {
                   // details row
                   DetailsContainer(
                     title1: "Experience",
-                    subtitle1: "3YRS",
+                    subtitle1: "${trainer.experience}",
                     title2: "Age",
-                    subtitle2: "35YRS",
+                    subtitle2: "${trainer.age}",
                     title3: "Specialty",
-                    subtitle3: "Cross-fit",
+                    subtitle3: "${trainer.specialty}",
                   ),
 
                   const SizedBox(

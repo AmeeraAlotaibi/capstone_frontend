@@ -18,4 +18,14 @@ class TrainerService {
     }
     return trainers;
   }
+  // Future<Trainer> getTrainersDetails()async{
+  //   late Trainer trainer;
+
+  //   try{
+  //     Response res = await Client.dio.get(
+  //       "trainer-detail/$placeholder/",
+  //     );
+  //     trainer = (res.data).fromJson
+  //   }
+  // }
 }
