@@ -33,32 +33,26 @@ class _LoginTabState extends State<LoginTab> {
             vertical: 15,
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (theme.isDarkMode == true)
                 Image.asset("assets/images/login-dark.png"),
               if (theme.isDarkMode == false)
                 Image.asset("assets/images/login-light.png"),
               const SizedBox(
-                height: 20,
+                height: 25,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 0),
-                child: Text(
-                  "Welcome back,",
-                  style: Theme.of(context).textTheme.headline1,
-                ),
+              Text(
+                "Welcome back,",
+                style: Theme.of(context).textTheme.headline1,
               ),
               const SizedBox(
                 height: 5,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                  "Login using the correct username/password combination.",
-                  style: Theme.of(context).textTheme.subtitle1,
-                ),
+              Text(
+                "Login using the correct username/password combination.",
+                style: Theme.of(context).textTheme.subtitle1,
               ),
               const SizedBox(
                 height: 25,

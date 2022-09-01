@@ -39,7 +39,7 @@ class _RegisterTabState extends State<RegisterTab> {
               if (theme.isDarkMode == false)
                 Image.asset("assets/images/register-light.png"),
               const SizedBox(
-                height: 20,
+                height: 25,
               ),
               Text(
                 "Let's Get Started...",
