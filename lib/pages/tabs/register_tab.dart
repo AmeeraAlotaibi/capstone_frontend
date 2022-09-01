@@ -46,7 +46,7 @@ class _RegisterTabState extends State<RegisterTab> {
                 style: Theme.of(context).textTheme.headline1,
               ),
               const SizedBox(
-                height: 15,
+                height: 5,
               ),
               Text(
                 "Fill in the required fields to start your journey.",

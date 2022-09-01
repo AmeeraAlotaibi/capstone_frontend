@@ -20,7 +20,6 @@ class SubscriptionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 30, right: 30, top: 25, bottom: 10),
-      width: 350,
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(5),

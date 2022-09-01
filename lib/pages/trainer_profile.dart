@@ -14,7 +14,7 @@ class TrainerProfile extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Container(
-          height: 600,
+          height: MediaQuery.of(context).size.height - 150,
           margin: const EdgeInsets.only(top: 25),
           padding: const EdgeInsets.symmetric(horizontal: 25),
           child: Column(
