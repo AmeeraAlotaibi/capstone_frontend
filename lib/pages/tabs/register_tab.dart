@@ -1,5 +1,6 @@
 import 'package:capstone_frontend/models/user.dart';
 import 'package:capstone_frontend/providers/auth_provider.dart';
+import 'package:capstone_frontend/providers/theme_provider.dart';
 import 'package:capstone_frontend/widgets/generic/gradient_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -14,18 +15,15 @@ class RegisterTab extends StatefulWidget {
 
 class _RegisterTabState extends State<RegisterTab> {
   var _firstName = TextEditingController();
-
   var _lastName = TextEditingController();
-
   var _username = TextEditingController();
-
   var _password = TextEditingController();
-
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool isPasswordVisible = true;
+
   @override
   Widget build(BuildContext context) {
+    var theme = Provider.of<ThemeProvider>(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -33,32 +31,26 @@ class _RegisterTabState extends State<RegisterTab> {
             horizontal: 25,
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(
-                "assets/images/fitness-vector.png",
-                width: 300,
-              ),
+              if (theme.isDarkMode == true)
+                Image.asset("assets/images/register-dark.png"),
+              if (theme.isDarkMode == false)
+                Image.asset("assets/images/register-light.png"),
               const SizedBox(
                 height: 20,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Text(
-                  "Let's Get Started...",
-                  style: Theme.of(context).textTheme.headline1,
-                ),
+              Text(
+                "Let's Get Started...",
+                style: Theme.of(context).textTheme.headline1,
               ),
               const SizedBox(
                 height: 15,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Text(
-                  "Fill in the required fields to start your journey.",
-                  style: Theme.of(context).textTheme.subtitle1,
-                ),
+              Text(
+                "Fill in the required fields to start your journey.",
+                style: Theme.of(context).textTheme.subtitle1,
               ),
               const SizedBox(
                 height: 25,

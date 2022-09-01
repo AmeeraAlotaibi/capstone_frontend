@@ -1,5 +1,6 @@
 import 'package:capstone_frontend/models/user.dart';
 import 'package:capstone_frontend/providers/auth_provider.dart';
+import 'package:capstone_frontend/providers/theme_provider.dart';
 import 'package:capstone_frontend/widgets/generic/gradient_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -23,6 +24,7 @@ class _LoginTabState extends State<LoginTab> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Provider.of<ThemeProvider>(context);
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -34,10 +36,10 @@ class _LoginTabState extends State<LoginTab> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(
-                "assets/images/fitness-vector-login.png",
-                width: 300,
-              ),
+              if (theme.isDarkMode == true)
+                Image.asset("assets/images/login-dark.png"),
+              if (theme.isDarkMode == false)
+                Image.asset("assets/images/login-light.png"),
               const SizedBox(
                 height: 20,
               ),
