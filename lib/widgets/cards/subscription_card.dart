@@ -19,6 +19,7 @@ class SubscriptionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 350,
       padding: const EdgeInsets.only(left: 30, right: 30, top: 25, bottom: 10),
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
@@ -69,7 +70,7 @@ class SubscriptionCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               GenericButton(
-                width: 70,
+                width: 75,
                 onPressed: onPressed,
                 buttonText: "Cancel",
               ),

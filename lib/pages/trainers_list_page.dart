@@ -3,6 +3,7 @@ import 'package:capstone_frontend/widgets/cards/trainer_card.dart';
 import 'package:capstone_frontend/widgets/skeleton_loading/gridview_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart';
 
 class TrainersListPage extends StatelessWidget {
   TrainersListPage({Key? key}) : super(key: key);
@@ -58,8 +59,8 @@ class TrainersListPage extends StatelessWidget {
                         avatar:
                             trainer.trainers[index].image ?? "https://t4.ftcdn.net/jpg/00/64/67/63/240_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
                         onTap: () {
-                          // push to trainer profile here
-                        },
+                        context.push("/trainer-profile",extra: trainer.trainers[index].user.id);
+                      },
                       );
                     },
                   );

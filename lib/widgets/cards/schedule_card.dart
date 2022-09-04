@@ -4,9 +4,13 @@ class ScheduleCard extends StatelessWidget {
   ScheduleCard({
     Key? key,
     required this.sets,
+    required this.reps,
+    required this.time,
     required this.workout,
   }) : super(key: key);
   final int sets;
+  final int reps;
+  final String time;
   final String workout;
   @override
   Widget build(BuildContext context) {
@@ -28,7 +32,7 @@ class ScheduleCard extends StatelessWidget {
             height: 5,
           ),
           Text(
-            "${sets} set(s) of",
+            "$sets set(s) of",
             style: Theme.of(context).textTheme.headline6,
           ),
           Text(
@@ -43,11 +47,11 @@ class ScheduleCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "20 per set",
+                "$reps per set",
                 style: Theme.of(context).textTheme.subtitle2,
               ),
               Text(
-                "10 min",
+                "$time min",
                 style: Theme.of(context).textTheme.subtitle2,
               ),
             ],
