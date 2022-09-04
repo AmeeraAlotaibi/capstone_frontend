@@ -1,6 +1,8 @@
 import 'package:capstone_frontend/widgets/generic/dividers.dart';
 import 'package:capstone_frontend/widgets/generic/section_heading.dart';
 import 'package:capstone_frontend/widgets/cards/subscription_card.dart';
+import 'package:capstone_frontend/widgets/sections/my_plans.dart';
+import 'package:capstone_frontend/widgets/sections/today_workout.dart';
 import 'package:flutter/material.dart';
 import 'package:capstone_frontend/widgets/cards/schedule_card.dart';
 import 'package:capstone_frontend/widgets/cards/welcome_card.dart';
@@ -35,10 +37,7 @@ class HomeTab extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              ScheduleCard(
-                sets: 5,
-                workout: "Push-ups",
-              ),
+              TodayExercise(),
               // MY SUBSCRIPTION HEADING
               SectionHeadings(
                   icon: Icon(
@@ -49,15 +48,7 @@ class HomeTab extends StatelessWidget {
               const SizedBox(
                 height: 15,
               ),
-              SubscriptionCard(
-                start_date: "01-09-2022",
-                end_date: "01-10-2022",
-                trainer: "Tony Stark",
-                price: "9.99",
-                onPressed: () {
-                  // cancel sub button function here
-                },
-              ),
+              MyPlans()
             ],
           ),
         ),

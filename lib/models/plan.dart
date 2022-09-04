@@ -1,21 +1,28 @@
-import 'package:json_annotation/json_annotation.dart';
-import 'package:capstone_frontend/models/user.dart';
+// ignore_for_file: non_constant_identifier_names
 
-part 'subscription_item.g.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'plan.g.dart';
 
 @JsonSerializable()
-class SubscriptionItem {
+class Plan {
+  int? id;
   int plan;
-  User trainee;
+  int? trainee;
   String start_date;
   String end_date;
   bool active;
   bool payment_status;
   bool auto_renew;
+  String? price;
+  String? trainer;
 
-  SubscriptionItem({
+  Plan({
+    this.id,
     required this.plan,
-    required this.trainee,
+    this.trainee,
+    this.price,
+    this.trainer,
     required this.start_date,
     required this.end_date,
     required this.active,
@@ -23,7 +30,7 @@ class SubscriptionItem {
     required this.auto_renew,
   });
 
-  factory SubscriptionItem.fromJson(Map<String, dynamic> json) =>
-      _$SubscriptionItemFromJson(json);
-  Map<String, dynamic> toJson() => _$SubscriptionItemToJson(this);
+  factory Plan.fromJson(Map<String, dynamic> json) =>
+      _$PlanFromJson(json);
+  Map<String, dynamic> toJson() => _$PlanToJson(this);
 }

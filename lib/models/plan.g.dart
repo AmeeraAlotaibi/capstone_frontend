@@ -1,15 +1,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'subscription_item.dart';
+part of 'plan.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-SubscriptionItem _$SubscriptionItemFromJson(Map<String, dynamic> json) =>
-    SubscriptionItem(
+Plan _$PlanFromJson(Map<String, dynamic> json) => Plan(
+      id: json['id'] as int?,
       plan: json['plan'] as int,
-      trainee: User.fromJson(json['trainee'] as Map<String, dynamic>),
+      trainee: json['trainee'] as int?,
+      price: json['price'] as String?,
+      trainer: json['trainer'] as String?,
       start_date: json['start_date'] as String,
       end_date: json['end_date'] as String,
       active: json['active'] as bool,
@@ -17,8 +19,8 @@ SubscriptionItem _$SubscriptionItemFromJson(Map<String, dynamic> json) =>
       auto_renew: json['auto_renew'] as bool,
     );
 
-Map<String, dynamic> _$SubscriptionItemToJson(SubscriptionItem instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$PlanToJson(Plan instance) => <String, dynamic>{
+      'id': instance.id,
       'plan': instance.plan,
       'trainee': instance.trainee,
       'start_date': instance.start_date,
@@ -26,4 +28,6 @@ Map<String, dynamic> _$SubscriptionItemToJson(SubscriptionItem instance) =>
       'active': instance.active,
       'payment_status': instance.payment_status,
       'auto_renew': instance.auto_renew,
+      'price': instance.price,
+      'trainer': instance.trainer,
     };
