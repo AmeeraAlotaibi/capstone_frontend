@@ -3,14 +3,19 @@ import 'package:capstone_frontend/providers/trainee_provider.dart';
 import 'package:capstone_frontend/widgets/cards/details_container.dart';
 import 'package:capstone_frontend/widgets/generic/edit_circle_button.dart';
 import 'package:capstone_frontend/widgets/generic/section_heading.dart';
+import 'package:capstone_frontend/widgets/sections/bar_chart.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/generic/dividers.dart';
 
 class ProfileTab extends StatelessWidget {
-  const ProfileTab({Key? key}) : super(key: key);
-
+   ProfileTab({Key? key}) : super(key: key);
+final List<Color> gradientColors = [
+    const Color(0xff23b6e6),
+    const Color(0xff02d39a),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +39,7 @@ class ProfileTab extends StatelessWidget {
                               radius: 60,
                               backgroundColor: Colors.grey[400],
                               backgroundImage: NetworkImage(
-                                  "https://millingtontownship.com/wp-content/uploads/2021/01/default.jpg"),
+                                 profile.trainee.image?? "https://millingtontownship.com/wp-content/uploads/2021/01/default.jpg"),
                             ),
                             Positioned(
                                 bottom: 0,
@@ -60,7 +65,7 @@ class ProfileTab extends StatelessWidget {
                                   style: Theme.of(context).textTheme.headline6,
                                 ),
                                 const SizedBox(
-                                  width: 15,
+                                  width: 5,
                                 ),
                                 Text(
                                   "O+",
@@ -84,7 +89,7 @@ class ProfileTab extends StatelessWidget {
                               style: Theme.of(context).textTheme.bodyText1,
                             ),
                             const SizedBox(
-                              height: 20,
+                              height: 10,
                             ),
                             DetailsContainer(
                               title1: "Height",
@@ -94,6 +99,7 @@ class ProfileTab extends StatelessWidget {
                               title3: "Weight",
                               subtitle3: "${profile.trainee.weight}",
                             ),
+                            
                             SectionHeadings(
                               icon: Icon(
                                 Icons.monitor_heart,
@@ -102,6 +108,11 @@ class ProfileTab extends StatelessWidget {
                               heading: "Statistics",
                             ),
                             const HorizontalDiv(),
+                           const SizedBox(
+                              height: 20,
+                            ),
+                          
+                           BarChartWidgte()
                           ],
                         ),
                       ],
