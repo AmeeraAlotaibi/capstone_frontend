@@ -1,3 +1,4 @@
+import 'package:capstone_frontend/models/trainer.dart';
 import 'package:capstone_frontend/pages/auth_page.dart';
 import 'package:capstone_frontend/pages/edit_profile.dart';
 import 'package:capstone_frontend/pages/exercises_list_page.dart';
@@ -8,6 +9,7 @@ import 'package:capstone_frontend/providers/auth_provider.dart';
 import 'package:capstone_frontend/providers/category_provider.dart';
 import 'package:capstone_frontend/providers/plan_provider.dart';
 import 'package:capstone_frontend/providers/theme_provider.dart';
+import 'package:capstone_frontend/providers/trainee_provider.dart';
 import 'package:capstone_frontend/providers/trainer_provider.dart';
 import 'package:capstone_frontend/providers/workout_provider.dart';
 import 'package:capstone_frontend/themes/dark_theme.dart';
@@ -30,6 +32,10 @@ void main() {
         ChangeNotifierProvider<ThemeProvider>(
           create: (_) => ThemeProvider(),
         ),
+
+        ChangeNotifierProvider<TraineeProvider>(
+          create: (_) => TraineeProvider(),
+
         ChangeNotifierProvider<PlanProvider>(
           create: (_) => PlanProvider(),
         ),
@@ -38,6 +44,7 @@ void main() {
         ),
         ChangeNotifierProvider<CategoryProvider>(
           create: (_) => CategoryProvider(),
+
         ),
       ],
       child: MyApp(),
@@ -81,7 +88,9 @@ class MyApp extends StatelessWidget {
       ),
       GoRoute(
         path: "/trainer-profile",
+
         builder: (context, state) => TrainerProfile(trainerId: state.extra),
+
       ),
       GoRoute(
         path: "/trainers-list",

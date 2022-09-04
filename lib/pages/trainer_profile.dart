@@ -1,3 +1,4 @@
+
 import 'package:capstone_frontend/providers/plan_provider.dart';
 import 'package:capstone_frontend/providers/trainer_provider.dart';
 import 'package:capstone_frontend/widgets/cards/details_container.dart';
@@ -8,10 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class TrainerProfile extends StatelessWidget {
+
   var trainerId;
   TrainerProfile({Key? key, required this.trainerId}) : super(key: key);
 
   var controller = ScrollController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -56,11 +59,13 @@ class TrainerProfile extends StatelessWidget {
                   // details row
                   DetailsContainer(
                     title1: "Experience",
+
                     subtitle1: '${trainer.trainerDetail.experience}YRS',
                     title2: "Age",
                     subtitle2: '${trainer.trainerDetail.age}YRS',
                     title3: "Specialty",
                     subtitle3: '${trainer.trainerDetail.specialty}',
+
                   ),
 
                   const SizedBox(

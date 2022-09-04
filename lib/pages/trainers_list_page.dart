@@ -1,14 +1,16 @@
+import 'package:capstone_frontend/models/trainer.dart';
 import 'package:capstone_frontend/providers/trainer_provider.dart';
 import 'package:capstone_frontend/widgets/cards/trainer_card.dart';
 import 'package:capstone_frontend/widgets/skeleton_loading/gridview_loading.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 
 class TrainersListPage extends StatelessWidget {
-  TrainersListPage({Key? key}) : super(key: key);
+  TrainersListPage({Key? key, this.trainer}) : super(key: key);
   var controller = ScrollController();
-
+  final Trainer? trainer;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,11 +58,13 @@ class TrainersListPage extends StatelessWidget {
                       return TrainerCard(
                         trainer:
                             "${trainer.trainers[index].user.first_name!} ${trainer.trainers[index].user.last_name!}",
-                        avatar:
-                            trainer.trainers[index].image ?? "https://t4.ftcdn.net/jpg/00/64/67/63/240_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
+                        avatar: trainer.trainers[index].image ??
+                            "https://t4.ftcdn.net/jpg/00/64/67/63/240_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
                         onTap: () {
+
                         context.push("/trainer-profile",extra: trainer.trainers[index].user.id);
                       },
+
                       );
                     },
                   );

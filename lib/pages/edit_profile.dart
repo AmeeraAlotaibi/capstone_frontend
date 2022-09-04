@@ -24,6 +24,7 @@ class _EditProfileState extends State<EditProfile> {
   final _height = TextEditingController();
   final _weight = TextEditingController();
   final _age = TextEditingController();
+  final _gender = TextEditingController();
   final List<String> bloodTypes = [
     "O+",
     "O-",

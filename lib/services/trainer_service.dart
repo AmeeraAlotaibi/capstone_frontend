@@ -19,6 +19,7 @@ class TrainerService {
     }
     return trainers;
   }
+
   // trainer details
   Future<Trainer> getTrainerDetail(int trainerId) async {
     try {
@@ -34,4 +35,5 @@ class TrainerService {
     // return trainer;
   
   }
+
 }
