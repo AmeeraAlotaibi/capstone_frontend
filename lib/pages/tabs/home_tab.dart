@@ -21,9 +21,7 @@ class HomeTab extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               WelcomeCard(
-                username: "Ameera".toUpperCase(),
-                avatar:
-                    "https://millingtontownship.com/wp-content/uploads/2021/01/default.jpg",
+                
               ),
               const HorizontalDiv(),
               // TODAYS SCHEDULE HEADING
