@@ -34,7 +34,7 @@ void main() {
         ),
 
         ChangeNotifierProvider<TraineeProvider>(
-          create: (_) => TraineeProvider(),
+          create: (_) => TraineeProvider(),),
 
         ChangeNotifierProvider<PlanProvider>(
           create: (_) => PlanProvider(),
