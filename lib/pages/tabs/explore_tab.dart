@@ -2,6 +2,7 @@ import 'package:capstone_frontend/widgets/generic/search_bar.dart';
 import 'package:capstone_frontend/widgets/generic/section_heading.dart';
 import 'package:capstone_frontend/widgets/cards/trainer_card.dart';
 import 'package:capstone_frontend/widgets/cards/workout_box.dart';
+import 'package:capstone_frontend/widgets/sections/popular_trainers.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -66,23 +67,7 @@ class ExploreTab extends StatelessWidget {
               ),
 
               // Will be replaced by a list view builder later on
-              SizedBox(
-                height: 206,
-                child: ListView.separated(
-                  itemCount: 3,
-                  scrollDirection: Axis.horizontal,
-                  separatorBuilder: (context, _) => const SizedBox(
-                    width: 10,
-                  ),
-                  itemBuilder: (context, index) => TrainerCard(
-                    trainer: trainer[index],
-                    avatar: avatar[index],
-                    onTap: () {
-                      context.push("/trainer-profile");
-                    },
-                  ),
-                ),
-              ),
+              PopularTrainer(),
               // end of will be replaced
 
               SectionHeadings(

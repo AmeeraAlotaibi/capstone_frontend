@@ -4,8 +4,10 @@ import 'package:capstone_frontend/pages/home_page.dart';
 import 'package:capstone_frontend/pages/trainer_profile.dart';
 import 'package:capstone_frontend/pages/trainers_list_page.dart';
 import 'package:capstone_frontend/providers/auth_provider.dart';
+import 'package:capstone_frontend/providers/plan_provider.dart';
 import 'package:capstone_frontend/providers/theme_provider.dart';
 import 'package:capstone_frontend/providers/trainer_provider.dart';
+import 'package:capstone_frontend/providers/workout_provider.dart';
 import 'package:capstone_frontend/themes/dark_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -24,6 +26,12 @@ void main() {
         ),
         ChangeNotifierProvider<ThemeProvider>(
           create: (_) => ThemeProvider(),
+        ),
+        ChangeNotifierProvider<PlanProvider>(
+          create: (_) => PlanProvider(),
+        ),
+        ChangeNotifierProvider<WorkoutProvider>(
+          create: (_) => WorkoutProvider(),
         ),
       ],
       child: MyApp(),
@@ -67,7 +75,7 @@ class MyApp extends StatelessWidget {
       ),
       GoRoute(
         path: "/trainer-profile",
-        builder: (context, state) => TrainerProfile(),
+        builder: (context, state) => TrainerProfile(trainerId: state.extra),
       ),
       GoRoute(
         path: "/trainers-list",
