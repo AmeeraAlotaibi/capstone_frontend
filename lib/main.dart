@@ -6,6 +6,7 @@ import 'package:capstone_frontend/pages/trainer_profile.dart';
 import 'package:capstone_frontend/pages/trainers_list_page.dart';
 import 'package:capstone_frontend/providers/auth_provider.dart';
 import 'package:capstone_frontend/providers/theme_provider.dart';
+import 'package:capstone_frontend/providers/trainee_provider.dart';
 import 'package:capstone_frontend/providers/trainer_provider.dart';
 import 'package:capstone_frontend/themes/dark_theme.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,9 @@ void main() {
         ),
         ChangeNotifierProvider<ThemeProvider>(
           create: (_) => ThemeProvider(),
+        ),
+        ChangeNotifierProvider<TraineeProvider>(
+          create: (_) => TraineeProvider(),
         ),
       ],
       child: MyApp(),
