@@ -1,9 +1,14 @@
 import 'dart:io';
+import 'package:capstone_frontend/models/trainee.dart';
+import 'package:capstone_frontend/models/user.dart';
+import 'package:capstone_frontend/providers/trainee_provider.dart';
 import 'package:capstone_frontend/widgets/generic/bio_textfield.dart';
 import 'package:capstone_frontend/widgets/generic/gradient_button.dart';
 import 'package:capstone_frontend/widgets/generic/input_label.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 class EditProfile extends StatefulWidget {
   EditProfile({Key? key}) : super(key: key);
@@ -235,6 +240,25 @@ class _EditProfileState extends State<EditProfile> {
                   width: 350,
                   buttonText: "Save",
                   onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      _formKey.currentState!.save();
+                      Provider.of<TraineeProvider>(context, listen: false)
+                          .editProfile(
+                              trainee: Trainee(
+                        user: User(
+                            first_name: _firstName.text,
+                            last_name: _lastName.text,
+                            username: _userName.text),
+                        gender: _gender.text,
+                        age: int.parse(_age.text),
+                        height: int.parse(_height.text),
+                        weight: int.parse(_weight.text),
+                        blood_type: _bloodType.text,
+                        // image: _image.text
+                      ));
+                      context.pop();
+                    }
+
                     // save profile function here
                   },
                 ),

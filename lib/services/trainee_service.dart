@@ -28,10 +28,9 @@ class TraineeService {
         "height": trainee.height,
         "weight": trainee.weight,
         "blood_type": trainee.blood_type,
-        "image": await MultipartFile.fromFile(trainee.image!),
+        // "image": await MultipartFile.fromFile(trainee.image!),
       });
-      Response res =
-          await Client.dio.post("trainee/${trainee.user!.id}", data: data);
+      Response res = await Client.dio.patch("my-profile/", data: data);
       updatedTrainee = Trainee.fromJson(res.data);
     } on DioError catch (error) {
       print(error);
@@ -44,10 +43,8 @@ class TraineeService {
     try {
       Response res =
           await Client.dio.get("performace/monthly?year=2022&month=9");
-      performcaces =(res.data as List)
-          .map((data) =>  Performace.fromJson(data))
-          .toList();
-      
+      performcaces =
+          (res.data as List).map((data) => Performace.fromJson(data)).toList();
     } on DioError catch (error) {
       print(error);
     }

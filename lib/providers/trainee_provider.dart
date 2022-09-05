@@ -8,8 +8,9 @@ import 'package:flutter/material.dart';
 
 class TraineeProvider extends ChangeNotifier {
   late Trainee trainee;
-  late List<Performace> performances=[];
-  List<BarChartGroupData> list=[];
+  late List<Performace> performances = [];
+  List<BarChartGroupData> list = [];
+
   Future<Trainee> editProfile({required Trainee trainee}) async {
     Trainee updatedTrainee =
         await TraineeService().editProfile(trainee: trainee);
@@ -25,11 +26,17 @@ class TraineeProvider extends ChangeNotifier {
   Future<List<BarChartGroupData>> getPreformance() async {
     performances = await TraineeService().getPreformance();
     var count = 0;
-    List<BarChartGroupData> data_list=[];
-    for (var item in performances){
-      count = count+1;
-      BarChartGroupData data = BarChartGroupData(x: count , barRods: [ BarChartRodData(fromY: 0, width: 15, color: Colors.amber, toY: item.active_calories!.toDouble()),]);
-      data_list.add(data) ;   
+    List<BarChartGroupData> data_list = [];
+    for (var item in performances) {
+      count = count + 1;
+      BarChartGroupData data = BarChartGroupData(x: count, barRods: [
+        BarChartRodData(
+            fromY: 0,
+            width: 15,
+            color: Colors.amber,
+            toY: item.active_calories!.toDouble()),
+      ]);
+      data_list.add(data);
     }
     list = data_list;
     return list;

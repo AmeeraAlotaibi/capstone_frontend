@@ -10,8 +10,8 @@ Performace _$PerformaceFromJson(Map<String, dynamic> json) => Performace(
       date: json['date'] as String?,
       done: json['done'] as int?,
       all: json['all'] as int?,
-      total_calories: json['total_calories'] as double?,
-      active_calories: json['active_calories'] as double?,
+      total_calories: (json['total_calories'] as num?)?.toDouble(),
+      active_calories: (json['active_calories'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$PerformaceToJson(Performace instance) =>
