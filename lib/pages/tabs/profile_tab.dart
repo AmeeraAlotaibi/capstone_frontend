@@ -4,6 +4,7 @@ import 'package:capstone_frontend/widgets/cards/details_container.dart';
 import 'package:capstone_frontend/widgets/generic/edit_circle_button.dart';
 import 'package:capstone_frontend/widgets/generic/section_heading.dart';
 import 'package:capstone_frontend/widgets/sections/bar_chart.dart';
+import 'package:capstone_frontend/widgets/skeleton_loading/profile_loading.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -11,8 +12,8 @@ import 'package:provider/provider.dart';
 import '../../widgets/generic/dividers.dart';
 
 class ProfileTab extends StatelessWidget {
-   ProfileTab({Key? key}) : super(key: key);
-final List<Color> gradientColors = [
+  ProfileTab({Key? key}) : super(key: key);
+  final List<Color> gradientColors = [
     const Color(0xff23b6e6),
     const Color(0xff02d39a),
   ];
@@ -26,7 +27,7 @@ final List<Color> gradientColors = [
               future: context.watch<TraineeProvider>().getProfile(),
               builder: (context, dataSnapshot) {
                 if (dataSnapshot.connectionState == ConnectionState.waiting) {
-                  return Text("waiting");
+                  return const ProfileLoading();
                 } else {
                   return Consumer<TraineeProvider>(
                       builder: (context, profile, child) {
@@ -38,8 +39,9 @@ final List<Color> gradientColors = [
                             CircleAvatar(
                               radius: 60,
                               backgroundColor: Colors.grey[400],
-                              backgroundImage: NetworkImage(
-                                 profile.trainee.image?? "https://millingtontownship.com/wp-content/uploads/2021/01/default.jpg"),
+                              backgroundImage: NetworkImage(profile
+                                      .trainee.image ??
+                                  "https://millingtontownship.com/wp-content/uploads/2021/01/default.jpg"),
                             ),
                             Positioned(
                                 bottom: 0,
@@ -71,6 +73,16 @@ final List<Color> gradientColors = [
                                   profile.trainee.blood_type??"O+",
                                   style: Theme.of(context).textTheme.caption,
                                 ),
+
+                                profile.trainee.gender == "Female"
+                                    ? Icon(
+                                        Icons.female,
+                                        color: Colors.pink[200],
+                                      )
+                                    : Icon(
+                                        Icons.male,
+                                        color: Colors.blue[200],
+                                      ),
                               ],
                             ),
                             const SizedBox(
@@ -84,7 +96,7 @@ final List<Color> gradientColors = [
                               height: 10,
                             ),
                             Text(
-                              "lorem ipsum, dolor sit amet, consectetur elit, seddo eisumnd lorem ipsum dolor sit.",
+                              profile.trainee.bio ?? "Write about yourself...",
                               textAlign: TextAlign.center,
                               style: Theme.of(context).textTheme.bodyText1,
                             ),
@@ -93,13 +105,12 @@ final List<Color> gradientColors = [
                             ),
                             DetailsContainer(
                               title1: "Height",
-                              subtitle1: "${profile.trainee.height}",
+                              subtitle1: "${profile.trainee.height} CM",
                               title2: "Age",
-                              subtitle2: "${profile.trainee.age}",
+                              subtitle2: "${profile.trainee.age} YRS",
                               title3: "Weight",
-                              subtitle3: "${profile.trainee.weight}",
+                              subtitle3: "${profile.trainee.weight} KG",
                             ),
-                            
                             SectionHeadings(
                               icon: Icon(
                                 Icons.monitor_heart,
@@ -108,11 +119,10 @@ final List<Color> gradientColors = [
                               heading: "Statistics",
                             ),
                             const HorizontalDiv(),
-                           const SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
-                          
-                           BarChartWidgte()
+                            // BarChartWidgte()
                           ],
                         ),
                       ],

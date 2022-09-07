@@ -1,4 +1,5 @@
 import 'package:capstone_frontend/providers/trainee_provider.dart';
+import 'package:capstone_frontend/widgets/skeleton_loading/welcome_card_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,12 +9,14 @@ class WelcomeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: context.read<TraineeProvider>().getProfile(),
+
+        future: context.watch<TraineeProvider>().getProfile(),
         builder: (context, dataSnapshot) {
           if (dataSnapshot.connectionState == ConnectionState.waiting) {
             // loading skeleton
             return const Center(
-              child: CircularProgressIndicator(),
+
+              child: WelcomeCardLoading(),
             );
           } else {
             // start of future builder

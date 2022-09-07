@@ -33,7 +33,7 @@ class ExerciseCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 175,
+              height: 150,
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: Theme.of(context).dividerColor,
@@ -46,11 +46,13 @@ class ExerciseCard extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            Text(
-              "  $name",
-              style: const TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 16,
+            Expanded(
+              child: Text(
+                "  $name",
+                style: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16,
+                ),
               ),
             ),
             const SizedBox(
@@ -72,31 +74,6 @@ class ExerciseCard extends StatelessWidget {
                 const SizedBox(
               width: 6,
             ),
-                 const Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                  size: 15,
-                ),
-                const Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                  size: 15,
-                ),
-                const Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                  size: 15,
-                ),
-                const Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                  size: 15,
-                ),
-                const Icon(
-                  Icons.star,
-                  color: Colors.grey,
-                  size: 15,
-                ),
               ],
             ),
             // will be replace later

@@ -1,12 +1,10 @@
 import 'package:capstone_frontend/models/performace.dart';
 import 'package:capstone_frontend/models/trainee.dart';
-import 'package:capstone_frontend/models/trainer.dart';
-import 'package:capstone_frontend/models/user.dart';
 import 'package:capstone_frontend/services/client.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 
 class TraineeService {
+  // get profile data
   Future<Trainee> getProfile() async {
     late Trainee trainee;
     try {
@@ -19,6 +17,7 @@ class TraineeService {
   }
 
   Future<void> editProfile({required Trainee trainee}) async {
+
     try {
       if(trainee.image=="")
       {FormData data = FormData.fromMap({
@@ -29,7 +28,7 @@ class TraineeService {
         "blood_type": trainee.blood_type,
         "first_name":trainee.user!.first_name,
         "last_name":trainee.user!.last_name,
-      
+        "bio": trainee.bio,
       });
            await Client.dio.patch("my-profile/", data: data);
 
@@ -43,6 +42,7 @@ class TraineeService {
         "blood_type": trainee.blood_type,
         "first_name":trainee.user!.first_name,
         "last_name":trainee.user!.last_name,
+        "bio": trainee.bio,
        "image": await MultipartFile.fromFile(trainee.image!),
       
       });
@@ -54,6 +54,7 @@ class TraineeService {
     }
   }
 
+  // get stats
   Future<List<Performace>> getPreformance() async {
     List<Performace> performcaces = [];
     try {

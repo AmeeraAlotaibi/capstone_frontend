@@ -9,20 +9,19 @@ class Subscription {
   int? id;
   String? name;
   int? price;
-  String? describtion;
+  String? description;
   int? trainer;
   int? duration;
   String? trainer_name;
 
-
   Subscription({
-     this.id,
-     this.name,
-     this.price,
-     this.describtion,
-     this.trainer,
-     this.duration,
-     this.trainer_name,
+    this.id,
+    this.name,
+    this.price,
+    this.description,
+    this.trainer,
+    this.duration,
+    this.trainer_name,
   });
 
   factory Subscription.fromJson(Map<String, dynamic> json) =>

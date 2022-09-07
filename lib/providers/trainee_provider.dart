@@ -1,9 +1,7 @@
 import 'package:capstone_frontend/models/performace.dart';
 import 'package:capstone_frontend/models/trainee.dart';
 import 'package:capstone_frontend/services/trainee_service.dart';
-import 'package:capstone_frontend/widgets/generic/change_theme_widget.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TraineeProvider extends ChangeNotifier {
@@ -11,16 +9,20 @@ class TraineeProvider extends ChangeNotifier {
   late List<Performace> performances = [];
   List<BarChartGroupData> list = [];
 
-  Future<void> editProfile({required Trainee trainee}) async {
-        await TraineeService().editProfile(trainee: trainee);
-    notifyListeners();
-  }
 
+  // get profile
   Future<Trainee> getProfile() async {
     trainee = await TraineeService().getProfile();
     return trainee;
   }
 
+  // edit profile
+  Future<void> editProfile({required Trainee trainee}) async {
+        await TraineeService().editProfile(trainee: trainee);
+    notifyListeners();
+  }
+
+  // get Performance
   Future<List<BarChartGroupData>> getPreformance() async {
     performances = await TraineeService().getPreformance();
     var count = 0;

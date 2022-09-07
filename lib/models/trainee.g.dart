@@ -16,6 +16,7 @@ Trainee _$TraineeFromJson(Map<String, dynamic> json) => Trainee(
       weight: json['weight'] as int?,
       blood_type: json['blood_type'] as String?,
       image: json['image'] as String?,
+      bio: json['bio'] as String?,
     );
 
 Map<String, dynamic> _$TraineeToJson(Trainee instance) => <String, dynamic>{
@@ -26,4 +27,5 @@ Map<String, dynamic> _$TraineeToJson(Trainee instance) => <String, dynamic>{
       'weight': instance.weight,
       'blood_type': instance.blood_type,
       'image': instance.image,
+      'bio': instance.bio,
     };
