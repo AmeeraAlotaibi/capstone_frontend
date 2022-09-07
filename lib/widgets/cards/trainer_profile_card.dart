@@ -1,5 +1,9 @@
+
+import 'package:capstone_frontend/models/trainer.dart';
+import 'package:capstone_frontend/providers/trainer_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:provider/provider.dart';
 
 class TrainerProfileCard extends StatelessWidget {
   TrainerProfileCard({
@@ -7,12 +11,16 @@ class TrainerProfileCard extends StatelessWidget {
     required this.avatar,
     required this.fullName,
     required this.username,
+    required this.id,
+    required this.rating,
     // required this.rating,
   }) : super(key: key);
 
   final String avatar;
   final String fullName;
   final String username;
+  final int id;
+  final double rating;
   // final String rating;
   @override
   Widget build(BuildContext context) {
@@ -62,7 +70,8 @@ class TrainerProfileCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       RatingBar(
-                        glow: false,
+                        initialRating: rating,
+                        glow: true,
                         itemSize: 17,
                         itemPadding: const EdgeInsets.all(0),
                         ratingWidget: RatingWidget(
@@ -79,10 +88,12 @@ class TrainerProfileCard extends StatelessWidget {
                             color: Colors.grey,
                           ),
                         ),
-                        onRatingUpdate: (rating) {},
+                        onRatingUpdate: (rating) async{
+                          await context.read<TrainerProvider>().rate(id,rating);
+                        },
                       ),
                       Text(
-                        "4.55",
+                        rating.toString(),
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ],

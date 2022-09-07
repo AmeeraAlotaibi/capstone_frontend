@@ -39,6 +39,8 @@ class PopularTrainer extends StatelessWidget {
                     ),
                     itemBuilder: (context, index) => TrainerCard(
                       trainer: trainer.trainers[index].user.username,
+                      id: trainer.trainers[index].user.id??0,
+                      rating: trainer.trainers[index].rating??0,
                       avatar: trainer.trainers[index].image ??
                           "https://millingtontownship.com/wp-content/uploads/2021/01/default.jpg",
                       onTap: () {

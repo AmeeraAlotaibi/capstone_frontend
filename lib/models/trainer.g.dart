@@ -9,6 +9,7 @@ part of 'trainer.dart';
 Trainer _$TrainerFromJson(Map<String, dynamic> json) => Trainer(
       user: User.fromJson(json['user'] as Map<String, dynamic>),
       age: json['age'] as int?,
+      rating: json['rating'] as double?,
       experience: json['experience'] as int?,
       specialty: json['specialty'] as String?,
       image: json['image'] as String?,
@@ -26,4 +27,5 @@ Map<String, dynamic> _$TrainerToJson(Trainer instance) => <String, dynamic>{
       'image': instance.image,
       'subscription': instance.subscription,
       'bio': instance.bio,
+      'rating': instance.rating,
     };

@@ -1,15 +1,22 @@
+import 'package:capstone_frontend/providers/trainer_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:provider/provider.dart';
 
 class TrainerCard extends StatelessWidget {
   const TrainerCard({
     Key? key,
     required this.trainer,
     required this.avatar,
+    required this.id,
+    required this.rating,
     required this.onTap,
   }) : super(key: key);
 
   final String trainer;
   final String avatar;
+  final int id;
+  final double rating;
   final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
@@ -61,36 +68,36 @@ class TrainerCard extends StatelessWidget {
                 const SizedBox(
                   width: 6,
                 ),
-                Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                  size: 15,
-                ),
-                Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                  size: 15,
-                ),
-                Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                  size: 15,
-                ),
-                Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                  size: 15,
-                ),
-                Icon(
-                  Icons.star,
-                  color: Colors.grey,
-                  size: 15,
-                ),
-                SizedBox(
+               
+                
+                 RatingBar(
+                        initialRating: rating,
+                        glow: true,
+                        itemSize: 15,
+                        itemPadding: const EdgeInsets.all(0),
+                        ratingWidget: RatingWidget(
+                          full: const Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          ),
+                          half: const Icon(
+                            Icons.star,
+                            color: Colors.amberAccent,
+                          ),
+                          empty: const Icon(
+                            Icons.star,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        onRatingUpdate: (rating) async{
+                          await context.read<TrainerProvider>().rate(id,rating);
+                        },
+                      ),
+                      SizedBox(
                   width: 5,
                 ),
                 Text(
-                  "4.65",
+                  rating.toString(),
                   style: TextStyle(
                     fontSize: 12,
                     color: Theme.of(context).canvasColor,

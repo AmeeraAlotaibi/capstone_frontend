@@ -51,6 +51,8 @@ class TrainerProfile extends StatelessWidget {
                                 fullName:
                                     '${trainer.trainerDetail.user.first_name} ${trainer.trainerDetail.user.last_name}',
                                 username: trainer.trainerDetail.user.username,
+                                id: trainer.trainerDetail.user.id??0,
+                                rating: trainer.trainerDetail.rating??0,
                               ),
                               const SizedBox(
                                 height: 25,
