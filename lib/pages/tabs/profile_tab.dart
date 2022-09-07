@@ -69,6 +69,11 @@ class ProfileTab extends StatelessWidget {
                                 const SizedBox(
                                   width: 5,
                                 ),
+                                Text(
+                                  profile.trainee.blood_type??"O+",
+                                  style: Theme.of(context).textTheme.caption,
+                                ),
+
                                 profile.trainee.gender == "Female"
                                     ? Icon(
                                         Icons.female,

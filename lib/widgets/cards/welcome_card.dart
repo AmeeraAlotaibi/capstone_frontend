@@ -9,11 +9,13 @@ class WelcomeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
+
         future: context.watch<TraineeProvider>().getProfile(),
         builder: (context, dataSnapshot) {
           if (dataSnapshot.connectionState == ConnectionState.waiting) {
             // loading skeleton
             return const Center(
+
               child: WelcomeCardLoading(),
             );
           } else {

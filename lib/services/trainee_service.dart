@@ -16,27 +16,42 @@ class TraineeService {
     return trainee;
   }
 
-  // edit profile
-  Future<Trainee> editProfile({required Trainee trainee}) async {
-    Trainee updatedTrainee = Trainee();
+  Future<void> editProfile({required Trainee trainee}) async {
+
     try {
-      FormData data = FormData.fromMap({
-        "user": trainee.user,
+      if(trainee.image=="")
+      {FormData data = FormData.fromMap({
         "gender": trainee.gender,
         "age": trainee.age,
         "height": trainee.height,
         "weight": trainee.weight,
         "blood_type": trainee.blood_type,
+        "first_name":trainee.user!.first_name,
+        "last_name":trainee.user!.last_name,
         "bio": trainee.bio,
-        "image": await MultipartFile.fromFile(trainee.image!),
       });
-      Response res =
-          await Client.dio.post("trainee/${trainee.user!.id}", data: data);
-      updatedTrainee = Trainee.fromJson(res.data);
+           await Client.dio.patch("my-profile/", data: data);
+
+      }
+      else
+      {FormData data = FormData.fromMap({
+        "gender": trainee.gender,
+        "age": trainee.age,
+        "height": trainee.height,
+        "weight": trainee.weight,
+        "blood_type": trainee.blood_type,
+        "first_name":trainee.user!.first_name,
+        "last_name":trainee.user!.last_name,
+        "bio": trainee.bio,
+       "image": await MultipartFile.fromFile(trainee.image!),
+      
+      });
+           await Client.dio.patch("my-profile/", data: data);
+
+      }
     } on DioError catch (error) {
       print(error);
     }
-    return updatedTrainee;
   }
 
   // get stats

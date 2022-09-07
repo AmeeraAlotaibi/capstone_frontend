@@ -9,6 +9,7 @@ class TraineeProvider extends ChangeNotifier {
   late List<Performace> performances = [];
   List<BarChartGroupData> list = [];
 
+
   // get profile
   Future<Trainee> getProfile() async {
     trainee = await TraineeService().getProfile();
@@ -16,11 +17,9 @@ class TraineeProvider extends ChangeNotifier {
   }
 
   // edit profile
-  Future<Trainee> editProfile({required Trainee trainee}) async {
-    Trainee updatedTrainee =
+  Future<void> editProfile({required Trainee trainee}) async {
         await TraineeService().editProfile(trainee: trainee);
     notifyListeners();
-    return updatedTrainee;
   }
 
   // get Performance
