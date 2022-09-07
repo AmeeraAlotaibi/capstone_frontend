@@ -14,8 +14,14 @@ class AuthService {
       );
       token = res.data["access"];
       print("register==== $token");
+      print("this is my id ====== ${user.id}");
     } on DioError catch (error) {
-      print(error.message);
+      if (error.response!.statusCode == 404) {
+        throw Exception("User Already Exists.");
+      } else {
+        print(error.message);
+        throw Exception("Unexpected Error Occured.");
+      }
     }
     return token;
   }
@@ -29,15 +35,16 @@ class AuthService {
         "trainee-login/",
         data: user.toJson(),
       );
-      // still in progress
-      if (res.statusCode == 401) {
-        throw "This username does not exist";
-      }
-      // still in progress
       token = res.data["access"];
       print("login==== $token");
+      print("this is my id ====== ${user.id}");
     } on DioError catch (error) {
-      print(error);
+      if (error.response!.statusCode == 404) {
+        throw Exception("User not found.");
+      } else {
+        print(error.message);
+        throw Exception("Unexpected Error Occured.");
+      }
     }
     return token;
   }

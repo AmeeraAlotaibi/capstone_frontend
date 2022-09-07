@@ -12,8 +12,16 @@ class Trainee {
   int? weight;
   String? blood_type;
   String? image;
-  Trainee(this.user, this.gender, this.age, this.height, this.weight,
-      this.blood_type, this.image);
+  String? bio;
+  Trainee(
+      {this.user,
+      this.gender,
+      this.age,
+      this.height,
+      this.weight,
+      this.blood_type,
+      this.image,
+      this.bio});
   factory Trainee.fromJson(Map<String, dynamic> json) =>
       _$TraineeFromJson(json);
   Map<String, dynamic> toJson() => _$TraineeToJson(this);

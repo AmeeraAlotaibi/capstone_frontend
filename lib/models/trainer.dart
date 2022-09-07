@@ -12,14 +12,16 @@ class Trainer {
   String? specialty;
   String? image;
   Subscription? subscription;
+  String? bio;
 
   Trainer({
     required this.user,
-     this.age,
-     this.experience,
-     this.specialty,
-     this.image,
-     this.subscription
+    this.age,
+    this.experience,
+    this.specialty,
+    this.image,
+    this.subscription,
+    this.bio,
   });
 
   factory Trainer.fromJson(Map<String, dynamic> json) =>
