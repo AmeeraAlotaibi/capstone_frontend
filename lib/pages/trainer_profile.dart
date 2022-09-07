@@ -47,7 +47,7 @@ class TrainerProfile extends StatelessWidget {
                             children: [
                               TrainerProfileCard(
                                 avatar: trainer.trainerDetail.image ??
-                                    "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp",
+                                    "https://millingtontownship.com/wp-content/uploads/2021/01/default.jpg",
                                 fullName:
                                     '${trainer.trainerDetail.user.first_name} ${trainer.trainerDetail.user.last_name}',
                                 username: trainer.trainerDetail.user.username,

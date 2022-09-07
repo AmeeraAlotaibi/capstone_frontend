@@ -110,8 +110,7 @@ class _EditProfileState extends State<EditProfile> {
                               fit: BoxFit.cover,
                             )
                           : Image.network(
-                             profile.image??                            "https://t4.ftcdn.net/jpg/00/64/67/63/240_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
-
+                             profile.image ?? "https://millingtontownship.com/wp-content/uploads/2021/01/default.jpg",
                               width: 200.0,
                               height: 200.0,
                               fit: BoxFit.cover,

@@ -14,7 +14,7 @@ class AuthService {
       );
       token = res.data["access"];
       print("register==== $token");
-      print("this is my id ====== ${user.id}");
+      print("this is my id ====== ${res.data["id"]}");
 
     } on DioError catch (error) {
       if (error.response!.statusCode == 404) {
