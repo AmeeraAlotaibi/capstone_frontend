@@ -1,12 +1,10 @@
 import 'package:capstone_frontend/models/performace.dart';
 import 'package:capstone_frontend/models/trainee.dart';
-import 'package:capstone_frontend/models/trainer.dart';
-import 'package:capstone_frontend/models/user.dart';
 import 'package:capstone_frontend/services/client.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 
 class TraineeService {
+  // get profile data
   Future<Trainee> getProfile() async {
     late Trainee trainee;
     try {
@@ -18,8 +16,9 @@ class TraineeService {
     return trainee;
   }
 
+  // edit profile
   Future<Trainee> editProfile({required Trainee trainee}) async {
-    late Trainee updatedTrainee;
+    Trainee updatedTrainee = Trainee();
     try {
       FormData data = FormData.fromMap({
         "user": trainee.user,
@@ -28,6 +27,7 @@ class TraineeService {
         "height": trainee.height,
         "weight": trainee.weight,
         "blood_type": trainee.blood_type,
+        "bio": trainee.bio,
         "image": await MultipartFile.fromFile(trainee.image!),
       });
       Response res =
@@ -39,15 +39,14 @@ class TraineeService {
     return updatedTrainee;
   }
 
+  // get stats
   Future<List<Performace>> getPreformance() async {
     List<Performace> performcaces = [];
     try {
       Response res =
           await Client.dio.get("performace/monthly?year=2022&month=9");
-      performcaces =(res.data as List)
-          .map((data) =>  Performace.fromJson(data))
-          .toList();
-      
+      performcaces =
+          (res.data as List).map((data) => Performace.fromJson(data)).toList();
     } on DioError catch (error) {
       print(error);
     }

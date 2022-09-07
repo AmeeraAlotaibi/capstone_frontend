@@ -15,6 +15,7 @@ Trainer _$TrainerFromJson(Map<String, dynamic> json) => Trainer(
       subscription: json['subscription'] == null
           ? null
           : Subscription.fromJson(json['subscription'] as Map<String, dynamic>),
+      bio: json['bio'] as String?,
     );
 
 Map<String, dynamic> _$TrainerToJson(Trainer instance) => <String, dynamic>{
@@ -24,4 +25,5 @@ Map<String, dynamic> _$TrainerToJson(Trainer instance) => <String, dynamic>{
       'specialty': instance.specialty,
       'image': instance.image,
       'subscription': instance.subscription,
+      'bio': instance.bio,
     };

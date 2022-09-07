@@ -1,9 +1,14 @@
 import 'dart:io';
+import 'package:capstone_frontend/models/trainee.dart';
+import 'package:capstone_frontend/models/user.dart';
+import 'package:capstone_frontend/providers/trainee_provider.dart';
 import 'package:capstone_frontend/widgets/generic/bio_textfield.dart';
 import 'package:capstone_frontend/widgets/generic/gradient_button.dart';
 import 'package:capstone_frontend/widgets/generic/input_label.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
 
 class EditProfile extends StatefulWidget {
   EditProfile({Key? key}) : super(key: key);
@@ -25,6 +30,14 @@ class _EditProfileState extends State<EditProfile> {
   final _weight = TextEditingController();
   final _age = TextEditingController();
   final _gender = TextEditingController();
+
+  String? selectedGender = "Male";
+  final List<String> genders = [
+    "Male",
+    "Female",
+  ];
+
+  String? selectedItem = "O+";
   final List<String> bloodTypes = [
     "O+",
     "O-",
@@ -35,7 +48,7 @@ class _EditProfileState extends State<EditProfile> {
     "AB+",
     "AB-"
   ];
-  String? selectedItem = "O+";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -186,36 +199,84 @@ class _EditProfileState extends State<EditProfile> {
                   height: 15,
                 ),
                 // dropdown menu for bloodtype
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      "Blood Type: ",
-                      style: Theme.of(context).textTheme.bodyText2,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Blood Type: ",
+                            style: Theme.of(context).textTheme.bodyText2,
+                          ),
+                          const SizedBox(
+                            height: 7.5,
+                          ),
+                          DropdownButtonFormField<String>(
+                            // isExpanded: true,
+                            dropdownColor: Theme.of(context).dividerColor,
+                            decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 15, vertical: 0),
+                              prefixIcon: Icon(
+                                Icons.bloodtype,
+                              ),
+                            ),
+                            value: selectedItem,
+                            items: bloodTypes
+                                .map(
+                                  (type) => DropdownMenuItem(
+                                    value: type,
+                                    child: Text(type),
+                                  ),
+                                )
+                                .toList(),
+                            onChanged: (type) =>
+                                setState(() => selectedItem = type),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(
-                      height: 7.5,
+                      width: 10,
                     ),
-                    DropdownButtonFormField<String>(
-                      isExpanded: true,
-                      dropdownColor: Theme.of(context).dividerColor,
-                      decoration: const InputDecoration(
-                        contentPadding:
-                            EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                        prefixIcon: Icon(
-                          Icons.bloodtype,
-                        ),
-                      ),
-                      value: selectedItem,
-                      items: bloodTypes
-                          .map(
-                            (type) => DropdownMenuItem(
-                              value: type,
-                              child: Text(type),
+                    // gender dropdown
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Gender: ",
+                            style: Theme.of(context).textTheme.bodyText2,
+                          ),
+                          const SizedBox(
+                            height: 7.5,
+                          ),
+                          DropdownButtonFormField<String>(
+                            // isExpanded: true,
+                            dropdownColor: Theme.of(context).dividerColor,
+                            decoration: const InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 15, vertical: 0),
+                              prefixIcon: Icon(
+                                Icons.person,
+                              ),
                             ),
-                          )
-                          .toList(),
-                      onChanged: (type) => setState(() => selectedItem = type),
+                            value: selectedGender,
+                            items: genders
+                                .map(
+                                  (gender) => DropdownMenuItem(
+                                    value: gender,
+                                    child: Text(gender),
+                                  ),
+                                )
+                                .toList(),
+                            onChanged: (gender) =>
+                                setState(() => selectedGender = gender),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -235,7 +296,24 @@ class _EditProfileState extends State<EditProfile> {
                   width: 350,
                   buttonText: "Save",
                   onPressed: () {
-                    // save profile function here
+                    context.read<TraineeProvider>().editProfile(
+                          trainee: Trainee(
+                            user: User(
+                              first_name: _firstName.text,
+                              last_name: _lastName.text,
+                              username: _userName.text,
+                            ),
+                            gender: _gender.text,
+                            age: int.parse(_age.text),
+                            height: int.parse(_height.text),
+                            weight: int.parse(_weight.text),
+                            bio: _bio.text,
+                            blood_type: _bloodType.text,
+                            image: _image!.path,
+                          ),
+                        );
+
+                    context.pop();
                   },
                 ),
                 const SizedBox(

@@ -11,6 +11,7 @@ class User {
   String? password;
 
   User({
+    this.id,
     this.first_name,
     this.last_name,
     required this.username,

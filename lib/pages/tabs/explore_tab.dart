@@ -11,18 +11,7 @@ import 'package:go_router/go_router.dart';
 class ExploreTab extends StatelessWidget {
   ExploreTab({Key? key}) : super(key: key);
   final _query = TextEditingController();
-  // DELETE LATER *******************
-  final List<String> trainer = [
-    "Terry Crews",
-    "Tony Stark",
-    "Jake Peralta",
-  ];
-  final List<String> avatar = [
-    "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp",
-    "https://mdbcdn.b-cdn.net/img/new/avatars/2.webp",
-    "https://aveurope.es/wp-content/uploads/2016/11/btx-avatar-placeholder-01.jpg",
-  ];
-  // DELETE LATER *******************
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,9 +56,7 @@ class ExploreTab extends StatelessWidget {
                 ),
               ),
 
-              // Will be replaced by a list view builder later on
               PopularTrainer(),
-              // end of will be replaced
 
               SectionHeadings(
                 icon: Icon(
@@ -83,7 +70,7 @@ class ExploreTab extends StatelessWidget {
                 height: 10,
               ),
               // start of workout container
-           Categories(),
+              Categories(),
               const SizedBox(
                 height: 10,
               ),
