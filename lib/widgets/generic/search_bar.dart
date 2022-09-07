@@ -30,12 +30,14 @@ class SearchBar extends StatelessWidget {
   suggestionsCallback:(pattern) async {
       return await context.read<TrainerProvider>().search(pattern);
   }, 
-   noItemsFoundBuilder: (context) => const SizedBox(
+   noItemsFoundBuilder: (context) =>  Container(
+             color: Theme.of(context).cardColor ,
+
                   height: 100,
                   child:  Center(
                     child: Text(
                       'No Users Found.',
-                      style: TextStyle(fontSize: 24),
+                     style: Theme.of(context).textTheme.bodyText2 ,
                     ),
                   ),
                 ),
