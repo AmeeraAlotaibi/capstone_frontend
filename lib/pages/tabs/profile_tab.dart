@@ -68,7 +68,7 @@ final List<Color> gradientColors = [
                                   width: 5,
                                 ),
                                 Text(
-                                  "O+",
+                                  profile.trainee.blood_type??"O+",
                                   style: Theme.of(context).textTheme.caption,
                                 ),
                               ],

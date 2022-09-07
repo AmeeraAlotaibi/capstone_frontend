@@ -20,6 +20,7 @@ class EditProfile extends StatefulWidget {
 class _EditProfileState extends State<EditProfile> {
   final _formKey = GlobalKey<FormState>();
   var _image;
+  late String profile_image="";
   final _picker = ImagePicker();
   final _firstName = TextEditingController();
   final _lastName = TextEditingController();
@@ -30,6 +31,27 @@ class _EditProfileState extends State<EditProfile> {
   final _weight = TextEditingController();
   final _age = TextEditingController();
   final _gender = TextEditingController();
+  late Trainee profile;
+   String? selectedItem;
+
+   void initState() {
+    profile = Provider.of<TraineeProvider>(context, listen: false).trainee;
+    super.initState();
+    // add post frame callback to update the image
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _firstName.text = profile.user?.first_name??"";
+      _lastName.text = profile.user?.last_name??"";
+      _userName.text = profile.user?.username??"";
+      // _bio.text = profile.bio??"";
+      selectedItem = profile.blood_type??"";
+      _height.text = profile.height.toString();
+      _weight.text = profile.weight.toString();
+      _age.text = profile.age.toString();
+      _gender.text = profile.gender??"";
+      profile_image = profile.image!;
+
+    });
+  }
   final List<String> bloodTypes = [
     "O+",
     "O-",
@@ -40,7 +62,6 @@ class _EditProfileState extends State<EditProfile> {
     "AB+",
     "AB-"
   ];
-  String? selectedItem = "O+";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,8 +97,7 @@ class _EditProfileState extends State<EditProfile> {
                               fit: BoxFit.cover,
                             )
                           : Image.network(
-                              _image ??
-                                  "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
+                             profile.image!,
                               width: 200.0,
                               height: 200.0,
                               fit: BoxFit.cover,
@@ -211,7 +231,7 @@ class _EditProfileState extends State<EditProfile> {
                           Icons.bloodtype,
                         ),
                       ),
-                      value: selectedItem,
+                      value: selectedItem??profile.blood_type,
                       items: bloodTypes
                           .map(
                             (type) => DropdownMenuItem(
@@ -253,8 +273,8 @@ class _EditProfileState extends State<EditProfile> {
                         age: int.parse(_age.text),
                         height: int.parse(_height.text),
                         weight: int.parse(_weight.text),
-                        blood_type: _bloodType.text,
-                        // image: _image.text
+                        blood_type: selectedItem,
+                        image: _image?.path ?? "",
                       ));
                       context.pop();
                     }
