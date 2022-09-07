@@ -87,7 +87,7 @@ class TrainerProfile extends StatelessWidget {
                                       height: 7.5,
                                     ),
                                     Text(
-                                      trainer.trainerDetail.bio!,
+                                      trainer.trainerDetail.bio ?? "Empty",
                                       style:
                                           Theme.of(context).textTheme.bodyText1,
                                     ),

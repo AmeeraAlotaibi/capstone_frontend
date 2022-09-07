@@ -15,9 +15,12 @@ class AuthService {
       token = res.data["access"];
       print("register==== $token");
       print("this is my id ====== ${user.id}");
+
     } on DioError catch (error) {
       if (error.response!.statusCode == 404) {
-        throw Exception("User Already Exists.");
+        throw Exception("User Not Found.");
+      } else if (error.response!.statusCode == 400) {
+          throw Exception("User Already Exists");
       } else {
         print(error.message);
         throw Exception("Unexpected Error Occured.");
@@ -41,6 +44,8 @@ class AuthService {
     } on DioError catch (error) {
       if (error.response!.statusCode == 404) {
         throw Exception("User not found.");
+      } else if (error.response!.statusCode == 400) {
+        throw Exception("User Already Exists.");
       } else {
         print(error.message);
         throw Exception("Unexpected Error Occured.");
