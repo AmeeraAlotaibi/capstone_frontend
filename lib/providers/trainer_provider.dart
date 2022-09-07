@@ -20,4 +20,10 @@ class TrainerProvider extends ChangeNotifier {
     trainerDetail = await TrainerService().getTrainerDetail(trainerId);
     return trainerDetail;
   }
+
+  // get trainer details
+  Future <void> rate(int trainerId,double rating) async {
+     await TrainerService().rate(trainerId,rating);
+     notifyListeners();
+  }
 }

@@ -51,5 +51,18 @@ class TrainerService {
     // return trainer;
   
   }
+  // trainer details
+  Future<void> rate(int trainerId,double rating) async {
+    try {
+     await Client.dio.post(
+        "rating/",data:{"trainer":trainerId,"rating":rating}
+      );
+      // print(trainers[0].image);
+    } on DioError catch (error) {
+      print(error);
+    }
+    // return trainer;
+  
+  }
 
 }
