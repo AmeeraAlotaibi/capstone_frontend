@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, prefer_typing_uninitialized_variables
+
 import 'dart:io';
 import 'package:capstone_frontend/models/trainee.dart';
 import 'package:capstone_frontend/models/user.dart';
@@ -26,13 +28,14 @@ class _EditProfileState extends State<EditProfile> {
   final _lastName = TextEditingController();
   final _userName = TextEditingController();
   final _bio = TextEditingController();
-  final _bloodType = TextEditingController();
   final _height = TextEditingController();
   final _weight = TextEditingController();
   final _age = TextEditingController();
   final _gender = TextEditingController();
   late Trainee profile;
    String? selectedItem;
+  String? selectedGender;
+
 
    void initState() {
     profile = Provider.of<TraineeProvider>(context, listen: false).trainee;
@@ -42,19 +45,19 @@ class _EditProfileState extends State<EditProfile> {
       _firstName.text = profile.user?.first_name??"";
       _lastName.text = profile.user?.last_name??"";
       _userName.text = profile.user?.username??"";
-      // _bio.text = profile.bio??"";
-      selectedItem = profile.blood_type??"";
+      _bio.text = profile.bio??"";
+      // selectedItem = profile.blood_type??"";
+      // selectedGender = profile.gender??"";
       _height.text = profile.height.toString();
       _weight.text = profile.weight.toString();
       _age.text = profile.age.toString();
       _gender.text = profile.gender??"";
-      profile_image = profile.image!;
+      profile_image = profile.image?? "https://t4.ftcdn.net/jpg/00/64/67/63/240_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg";
 
     });
   }
 
 
-  String? selectedGender = "Male";
   final List<String> genders = [
     "Male",
     "Female",
@@ -107,7 +110,8 @@ class _EditProfileState extends State<EditProfile> {
                               fit: BoxFit.cover,
                             )
                           : Image.network(
-                             profile.image!,
+                             profile.image??                            "https://t4.ftcdn.net/jpg/00/64/67/63/240_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
+
                               width: 200.0,
                               height: 200.0,
                               fit: BoxFit.cover,
@@ -286,7 +290,7 @@ class _EditProfileState extends State<EditProfile> {
                                 Icons.person,
                               ),
                             ),
-                            value: selectedGender,
+                            value: selectedGender??profile.gender,
                             items: genders
                                 .map(
                                   (gender) => DropdownMenuItem(
@@ -328,7 +332,8 @@ class _EditProfileState extends State<EditProfile> {
                             first_name: _firstName.text,
                             last_name: _lastName.text,
                             username: _userName.text),
-                        gender: _gender.text,
+                        gender: selectedGender,
+                        bio: _bio.text,
                         age: int.parse(_age.text),
                         height: int.parse(_height.text),
                         weight: int.parse(_weight.text),

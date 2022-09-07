@@ -43,8 +43,10 @@ class MyPlans extends StatelessWidget {
                             end_date: planProvider.plans[index].end_date,
                             trainer: planProvider.plans[index].trainer!,
                             price: planProvider.plans[index].price!,
-                            onPressed: () {
+                            onPressed: () async{
                               // cancel sub button function here
+                             context.read<PlanProvider>().cancel(
+                                              planProvider.plans[index].id!);
                             },
                           ),
                         ),

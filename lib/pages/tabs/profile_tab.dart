@@ -122,7 +122,7 @@ class ProfileTab extends StatelessWidget {
                             const SizedBox(
                               height: 20,
                             ),
-                            // BarChartWidgte()
+                            BarChartWidgte()
                           ],
                         ),
                       ],

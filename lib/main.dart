@@ -3,6 +3,7 @@ import 'package:capstone_frontend/pages/auth_page.dart';
 import 'package:capstone_frontend/pages/edit_profile.dart';
 import 'package:capstone_frontend/pages/exercises_list_page.dart';
 import 'package:capstone_frontend/pages/home_page.dart';
+import 'package:capstone_frontend/pages/my_exercises_list_page.dart';
 import 'package:capstone_frontend/pages/trainer_profile.dart';
 import 'package:capstone_frontend/pages/trainers_list_page.dart';
 import 'package:capstone_frontend/providers/auth_provider.dart';
@@ -103,6 +104,10 @@ class MyApp extends StatelessWidget {
       GoRoute(
         path: "/exercise",
         builder: (context, state) => MyHomePage(),
+      ),
+      GoRoute(
+        path: "/my_exercises_list",
+        builder: (context, state) => MyExercisesListPage(),
       ),
     ],
   );

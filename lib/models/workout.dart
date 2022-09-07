@@ -7,6 +7,7 @@ part 'workout.g.dart';
 
 @JsonSerializable()
 class Workout {
+  int? id;
   int? trainee;
   Exercise? exercise;
   int? reps;
@@ -17,6 +18,7 @@ class Workout {
 
 
   Workout({
+     this.id,
      this.trainee,
      this.exercise,
      this.reps,

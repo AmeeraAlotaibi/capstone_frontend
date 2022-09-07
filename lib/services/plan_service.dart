@@ -54,4 +54,23 @@ class PlanService {
     // return plan;
   
   }
+  Future<void> cancel(int planId) async {
+    
+
+    var data={
+      "active":false,
+      
+    };
+
+    try {
+      await Client.dio.patch(
+        "update/plan/$planId",data: data
+      );
+      // print(plans[0].image);
+    } on DioError catch (error) {
+      print(error);
+    }
+    // return plan;
+  
+  }
 }

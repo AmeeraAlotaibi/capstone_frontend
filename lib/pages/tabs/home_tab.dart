@@ -8,6 +8,7 @@ import 'package:capstone_frontend/widgets/skeleton_loading/welcome_card_loading.
 import 'package:flutter/material.dart';
 import 'package:capstone_frontend/widgets/cards/schedule_card.dart';
 import 'package:capstone_frontend/widgets/cards/welcome_card.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeTab extends StatelessWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -33,7 +34,20 @@ class HomeTab extends StatelessWidget {
                   Icons.today,
                   color: Theme.of(context).canvasColor,
                 ),
-                heading: "Today's Schedule",
+                heading: "Today's Schedule"
+                , trailing: TextButton(
+                  onPressed: () {
+                    // push to list of trainers here
+                    context.push("/my_exercises_list");
+                  },
+                  child: Text(
+                    "see all",
+                    style: TextStyle(
+                      color: Theme.of(context).canvasColor,
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
               ),
               const SizedBox(
                 height: 15,
@@ -45,7 +59,9 @@ class HomeTab extends StatelessWidget {
                     Icons.monetization_on,
                     color: Theme.of(context).canvasColor,
                   ),
-                  heading: "My Subscription"),
+                  heading: "My Subscription"
+                  ),
+                  
               const SizedBox(
                 height: 15,
               ),

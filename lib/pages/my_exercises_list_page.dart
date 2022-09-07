@@ -1,20 +1,22 @@
 import 'package:capstone_frontend/providers/category_provider.dart';
+import 'package:capstone_frontend/providers/workout_provider.dart';
 import 'package:capstone_frontend/widgets/cards/exercise_card.dart';
+import 'package:capstone_frontend/widgets/cards/schedule_card.dart';
+import 'package:capstone_frontend/widgets/generic/nothing_view.dart';
 import 'package:capstone_frontend/widgets/skeleton_loading/gridview_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 
-class ExercisesListPage extends StatelessWidget {
-  final int categoryId;
-  ExercisesListPage({Key? key, required this.categoryId}) : super(key: key);
+class MyExercisesListPage extends StatelessWidget {
+  MyExercisesListPage({Key? key}) : super(key: key);
   var controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Exercises"),
+        title: const Text("Assigned Workout"),
         actions: [
           IconButton(
             onPressed: () {
@@ -31,7 +33,7 @@ class ExercisesListPage extends StatelessWidget {
         ],
       ),
       body: FutureBuilder(
-          future: context.watch<CategoryProvider>().getExercises(categoryId),
+          future: context.watch<WorkoutProvider>().getAllWorkouts(),
           builder: (context, dataSnapshot) {
             if (dataSnapshot.connectionState == ConnectionState.waiting) {
               // loading skeleton
@@ -40,7 +42,7 @@ class ExercisesListPage extends StatelessWidget {
               );
             } else {
               // start of future builder
-              return Consumer<CategoryProvider>(
+              return Consumer<WorkoutProvider>(
                 builder: ((context, prov, child) {
                   return GridView.builder(
                     gridDelegate:
@@ -52,18 +54,22 @@ class ExercisesListPage extends StatelessWidget {
                     ),
                     padding: const EdgeInsets.all(15),
                     controller: controller,
-                    itemCount: prov.exercises.length,
+                    itemCount: prov.allWorkouts.length,
                     itemBuilder: (context, index) {
-                      return ExerciseCard(
-                        name:
-                         prov.exercises[index].name!,
-                        image:
-                            prov.exercises[index].image ?? "https://t4.ftcdn.net/jpg/00/64/67/63/240_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg",
-                        onTap: () {
-                          ///
-                          context.push("/exercise",extra: prov.exercises[index].video??'https://youtu.be/EuFKQaCI_J0');
-                      }, trainer: prov.exercises[index].trainer!.user.username,
-                      );
+                      return  prov.allWorkouts.isEmpty
+                          ? const NothingHere()
+                          :  ScheduleCard(
+                                onTap: ()async {
+                                  await prov.doneWorkour(prov.allWorkouts[index].id!, !prov.allWorkouts[index].done!);
+                                },
+                                done:prov.allWorkouts[index].done!,
+                                date:prov.allWorkouts[index].date!,
+                                sets: prov.allWorkouts[index].sets!,
+                                workout:
+                                    prov.allWorkouts[index].exercise!.name!,
+                                time: prov.allWorkouts[index].time!,
+                                reps: prov.allWorkouts[index].reps!,
+                              );
                     },
                   );
                 }),

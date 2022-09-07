@@ -7,6 +7,7 @@ part of 'workout.dart';
 // **************************************************************************
 
 Workout _$WorkoutFromJson(Map<String, dynamic> json) => Workout(
+      id: json['id'] as int?,
       trainee: json['trainee'] as int?,
       exercise: json['exercise'] == null
           ? null
@@ -19,6 +20,7 @@ Workout _$WorkoutFromJson(Map<String, dynamic> json) => Workout(
     );
 
 Map<String, dynamic> _$WorkoutToJson(Workout instance) => <String, dynamic>{
+      'id': instance.id,
       'trainee': instance.trainee,
       'exercise': instance.exercise,
       'reps': instance.reps,

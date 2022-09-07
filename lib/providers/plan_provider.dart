@@ -29,6 +29,11 @@ class PlanProvider extends ChangeNotifier {
 
     PlanService().renew(foundPlan!.id!, duration);
   }
+  Future<void> cancel(int planId) async {
+
+    await PlanService().cancel(planId);
+    notifyListeners();
+  }
 
   // find Plan
   bool getPlanByID(int planId)  {

@@ -37,6 +37,10 @@ class TodayExercise extends StatelessWidget {
                               width: 10,
                             ),
                             itemBuilder: (context, index) => ScheduleCard(
+                              onTap: ()async {
+                                await prov.doneWorkour(prov.todayWorkouts[index].id!, !prov.todayWorkouts[index].done!);
+                              },
+                              done:prov.todayWorkouts[index].done!,
                               sets: prov.todayWorkouts[index].sets!,
                               workout:
                                   prov.todayWorkouts[index].exercise!.name!,
