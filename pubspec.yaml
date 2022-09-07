@@ -50,6 +50,7 @@ dependencies:
   chewie: ^1.0.0
   video_player: ^2.4.5
   fl_chart: ^0.55.1
+  flutter_typeahead: ^4.1.0
   
 
 dev_dependencies:

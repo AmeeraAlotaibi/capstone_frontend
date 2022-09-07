@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 
 class TrainerService {
   List<Trainer> trainers = [];
+  List<Trainer> searchList = [];
  Future<List<Trainer>> getTrainers() async {
     try {
       Response res = await Client.dio.get(
@@ -18,6 +19,21 @@ class TrainerService {
       print(error);
     }
     return trainers;
+  }
+
+ Future<List<Trainer>> search(String query) async {
+    try {
+      Response res = await Client.dio.get(
+        "trainer-list/?search=$query",
+      );
+      searchList = (res.data as List)
+          .map((trainer) => Trainer.fromJson(trainer))
+          .toList();
+      // print(searchList[0].image);
+    } on DioError catch (error) {
+      print(error);
+    }
+    return searchList;
   }
 
   // trainer details
