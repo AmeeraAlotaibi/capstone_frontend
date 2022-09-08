@@ -19,7 +19,7 @@ class PlanProvider extends ChangeNotifier {
   // subscribe
   void subscribe(int planId,int duration) async {
     var now = DateTime.now();
-    var startDate = DateTime(now.year, now.month , now.day + 2);
+    var startDate = DateTime(now.year, now.month , now.day);
     var endDate = DateTime(startDate.year, startDate.month , startDate.day + duration);
     Plan plan=Plan(active: true,plan: planId,payment_status: true,auto_renew: true,start_date:DateFormat('yyyy-MM-dd').format(startDate) ,end_date: DateFormat('yyyy-MM-dd').format(endDate));
     PlanService().subscribe(plan);
